@@ -1,1 +1,33 @@
-<p>main works!</p>
+<form #pdfForm="ngForm" (ngSubmit)="submitPdf(pdfForm.value)" ngNativeValidate>
+    
+        <div class="form-group">
+            <label for="clientOption">Maszyny: </label>
+    
+        <select class="form-select" name="atmId" ngModel>
+            <option value="" selected disabled hidden>-- Wybierz Identyfikator --</option>
+            <option *ngFor="let atm of resultsAtm" [value]="atm.id">{{atm.atmId}}</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+            <label for="clientOption">Operatorzy: </label>
+
+        <select class="form-select" name="operatorId" ngModel>
+            <option value="" selected disabled hidden>-- Wybierz Operatora --</option>
+            <option *ngFor="let operator of resultsOperator" [value]="operator.id">{{operator.name}}</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+            <label for="clientOption">Opis Klienta: </label>
+            <input type="text" [(ngModel)]="clientDescription" name="clientDescription">
+    
+        </div>
+
+        <div class="form-group">
+            <label for="clientOption">Opis Operatora: </label>
+            <input type="text" [(ngModel)]="operatorDescription" name="operatorDescription">
+        </div>
+
+        <input class="btn btn-dark" type="submit" value="Usuń">
+</form>
