@@ -36,7 +36,7 @@ export class MainComponent implements OnInit{
     });
   }
 
-  submitPdf(pdfForm: {atmId: number, 
+  public submitPdf(pdfForm: {atmId: number, 
           operatorId: number,
           clientDescription: string,
           operatorDescription: string}): void{
@@ -44,7 +44,7 @@ export class MainComponent implements OnInit{
       console.log(pdfForm);
 
       this.mainService.export(pdfForm).subscribe(() => {
-        console.log("Ok");
+        console.log("Ok!");
       });
   }
 }

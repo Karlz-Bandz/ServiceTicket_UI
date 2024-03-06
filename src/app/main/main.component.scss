@@ -1,0 +1,19 @@
+form{
+    margin-top: 100px;
+
+    .form-group{
+        margin-top: 10px;
+        text-align: center;
+    
+        .form-select{
+            width: 400px;
+            height: 20px;
+        }
+    
+        textarea{
+            height: 140px;
+            width: 460px;
+            resize: none;
+        }
+    }
+}

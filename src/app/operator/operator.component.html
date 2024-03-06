@@ -1,0 +1,24 @@
+<form #operatorForm="ngForm" (ngSubmit)="addOperator(operatorForm.value)" ngNativeValidate>
+    
+    <div class="form-group">
+        <div class="clientOption">Imię i nazwisko: </div>
+        <input type="text" [(ngModel)]="name" name="name">
+
+    </div>
+
+    <div class="form-group">
+        <div class="clientOption">Stanowisko: </div>
+        <input type="text" [(ngModel)]="role" name="role">
+    </div>
+
+    <div class="form-group">
+        <div class="clientOption">Telefon: </div>
+        <input type="text" [(ngModel)]="phone" name="phone">
+    </div>
+
+    <div class="form-group">
+        <input class="btn-dark" type="submit" value="Eksportuj PDF">
+    </div>
+
+    
+</form>

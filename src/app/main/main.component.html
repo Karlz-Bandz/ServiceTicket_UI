@@ -1,7 +1,7 @@
 <form #pdfForm="ngForm" (ngSubmit)="submitPdf(pdfForm.value)" ngNativeValidate>
     
         <div class="form-group">
-            <label for="clientOption">Maszyny: </label>
+            <div class="clientOption">Maszyny: </div>
     
         <select class="form-select" name="atmId" ngModel>
             <option value="" selected disabled hidden>-- Wybierz Identyfikator --</option>
@@ -10,7 +10,7 @@
         </div>
 
         <div class="form-group">
-            <label for="clientOption">Operatorzy: </label>
+            <div class="clientOption">Operatorzy: </div>
 
         <select class="form-select" name="operatorId" ngModel>
             <option value="" selected disabled hidden>-- Wybierz Operatora --</option>
@@ -19,15 +19,19 @@
         </div>
 
         <div class="form-group">
-            <label for="clientOption">Opis Klienta: </label>
-            <input type="text" [(ngModel)]="clientDescription" name="clientDescription">
+            <div class="clientOption">Opis Klienta: </div>
+            <textarea type="text" [(ngModel)]="clientDescription" name="clientDescription"></textarea>
     
         </div>
 
         <div class="form-group">
-            <label for="clientOption">Opis Operatora: </label>
-            <input type="text" [(ngModel)]="operatorDescription" name="operatorDescription">
+            <div class="clientOption">Opis Operatora: </div>
+            <textarea type="text" [(ngModel)]="operatorDescription" name="operatorDescription"></textarea>
         </div>
 
-        <input class="btn btn-dark" type="submit" value="Usuń">
+        <div class="form-group">
+            <input class="btn-dark" type="submit" value="Eksportuj PDF">
+        </div>
+
+        
 </form>
