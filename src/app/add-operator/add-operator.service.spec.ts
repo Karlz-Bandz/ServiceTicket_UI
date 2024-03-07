@@ -1,16 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OperatorService } from './operator.service';
+import { AddOperatorService } from './add-operator.service';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('OperatorService', () => {
-  let service: OperatorService;
+describe('AddOperatorService', () => {
+  let service: AddOperatorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: []
+      imports: [
+        HttpClientModule
+      ]
     });
-    service = TestBed.inject(OperatorService);
+    service = TestBed.inject(AddOperatorService);
   });
 
   it('should be created', () => {

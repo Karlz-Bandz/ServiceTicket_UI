@@ -1,0 +1,42 @@
+<form #atmForm="ngForm" (ngSubmit)="addAtm(atmForm.value)" ngNativeValidate>
+    
+    <div class="form-group">
+        <div class="clientOption">Identyfikator: </div>
+        <input type="text" [(ngModel)]="atmId" name="atmId">
+
+    </div>
+
+    <div class="form-group">
+        <div class="clientOption">Numer seryjny: </div>
+        <input type="text" [(ngModel)]="serialNo" name="serialNo">
+    </div>
+
+    <div class="form-group">
+        <div class="clientOption">Typ: </div>
+        <input type="text" [(ngModel)]="type" name="type">
+    </div>
+
+    <div class="form-group">
+        <div class="clientOption">Nazwa klienta: </div>
+        <input type="text" [(ngModel)]="clientName" name="clientName">
+
+    </div>
+
+    <div class="form-group">
+        <div class="clientOption">Lokalizacja: </div>
+        <input type="text" [(ngModel)]="location" name="location">
+    </div>
+
+    <div class="form-group">
+        <div class="clientOption">Telefon: </div>
+        <input type="text" [(ngModel)]="phone" name="phone">
+    </div>
+
+    <div class="form-group">
+        <input class="btn-dark" type="submit" value="Dodaj operatora">
+    </div>
+
+    
+</form>
+
+

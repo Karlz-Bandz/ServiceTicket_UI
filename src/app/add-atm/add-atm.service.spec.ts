@@ -1,16 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OperatorService } from './operator.service';
+import { AddAtmService } from './add-atm.service';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('OperatorService', () => {
-  let service: OperatorService;
+describe('AddAtmService', () => {
+  let service: AddAtmService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: []
+      imports: [
+        HttpClientModule
+      ]
     });
-    service = TestBed.inject(OperatorService);
+    service = TestBed.inject(AddAtmService);
   });
 
   it('should be created', () => {
