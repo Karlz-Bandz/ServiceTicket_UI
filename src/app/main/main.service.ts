@@ -26,4 +26,8 @@ export class MainService {
   public export(masterTicketDto: MasterTicketDto): Observable<MasterTicketDto>{
     return this.http.post<MasterTicketDto>(`${this.baseApi}/pdf/export`, masterTicketDto);
   }
+
+  public deleteOperatorById(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseApi}/operator/delete/` + id);
+  }
 }

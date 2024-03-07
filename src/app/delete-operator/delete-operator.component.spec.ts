@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteOperatorComponent } from './delete-operator.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DeleteOperatorComponent', () => {
   let component: DeleteOperatorComponent;
@@ -8,7 +9,10 @@ describe('DeleteOperatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeleteOperatorComponent]
+      imports: [
+        DeleteOperatorComponent,
+        HttpClientModule
+      ]
     })
     .compileComponents();
     

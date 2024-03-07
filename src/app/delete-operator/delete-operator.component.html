@@ -1,1 +1,15 @@
-<p>delete-operator works!</p>
+<form #deleteForm="ngForm" (ngSubmit)="deleteOperatorById(deleteForm.value)" ngNativeValidate>
+    
+    <div class="form-group">
+        <div class="clientOption">Operatorzy: </div>
+
+    <select class="form-select" name="operatorId" ngModel>
+        <option value="" selected disabled hidden>-- Wybierz Operatora --</option>
+        <option *ngFor="let operator of operators" [value]="operator.id">{{operator.name}}</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+        <input class="btn-dark" type="submit" value="Eksportuj PDF">
+    </div>
+</form>
