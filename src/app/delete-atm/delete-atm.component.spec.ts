@@ -4,6 +4,7 @@ import { DeleteAtmComponent } from './delete-atm.component';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('DeleteAtmComponent', () => {
+  
   let component: DeleteAtmComponent;
   let fixture: ComponentFixture<DeleteAtmComponent>;
 

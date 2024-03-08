@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 export class DeleteOperatorComponent implements OnInit {
 
   operators: CheckOperatorDto[] = [];
+  operator: CheckOperatorDto | undefined;
 
   constructor(private mainService: MainService){}
   
@@ -26,9 +27,11 @@ export class DeleteOperatorComponent implements OnInit {
     });
   }
 
-  public deleteOperatorById(deleteForm: {operatorId: number}): void{
-    this.mainService.deleteOperatorById(deleteForm.operatorId).subscribe(() => {
+  public deleteOperatorById(operatorForm: any): void{
+    this.mainService.deleteOperatorById(operatorForm.operator.id).subscribe(() => {
       console.log("Ok!");
+      location.reload();
+      alert("Operator " + operatorForm.operator.name + " został usunięty.");
     });
   }
 }

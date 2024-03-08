@@ -23,8 +23,7 @@ export class DeleteAtmComponent {
   
   constructor(
     private mainService: MainService,
-    private route: Router,
-    ){}
+  ){}
   
   ngOnInit(): void {
     this.mainService.getAtmList().subscribe(data => {

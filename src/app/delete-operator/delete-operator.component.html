@@ -1,11 +1,11 @@
-<form #deleteForm="ngForm" (ngSubmit)="deleteOperatorById(deleteForm.value)" ngNativeValidate>
+<form #operatorForm="ngForm" (ngSubmit)="deleteOperatorById(operatorForm.value)" ngNativeValidate>
     
     <div class="form-group">
         <div class="clientOption">Operatorzy: </div>
 
-    <select class="form-select" name="operatorId" ngModel>
+    <select class="form-select" name="operator" ngModel>
         <option value="" selected disabled hidden>-- Wybierz Operatora --</option>
-        <option *ngFor="let operator of operators" [value]="operator.id">{{operator.name}}</option>
+        <option *ngFor="let operator of operators" [ngValue]="operator">{{operator.name}}</option>
     </select>
     </div>
 
