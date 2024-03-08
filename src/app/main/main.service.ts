@@ -30,4 +30,8 @@ export class MainService {
   public deleteOperatorById(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseApi}/operator/delete/` + id);
   }
+
+  public deleteAtmById(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseApi}/atm/delete/` + id);
+  }
 }

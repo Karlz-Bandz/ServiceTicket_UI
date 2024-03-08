@@ -1,1 +1,15 @@
-<p>delete-atm works!</p>
+<form #atmForm="ngForm" (ngSubmit)="deleteAtmById(atmForm.value)" ngNativeValidate>
+    
+    <div class="form-group">
+        <div class="clientOption">Maszyny: </div>
+
+    <select class="form-select" name="atm" ngModel>
+        <option value="" selected disabled hidden>-- Wybierz Maszynę --</option>
+        <option *ngFor="let atm of atms" [ngValue]="atm">{{atm.atmId}}</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+        <input class="deleteBtn" type="submit" value="Usuń">
+    </div>
+</form>
