@@ -1,38 +1,49 @@
 import { Component } from '@angular/core';
 import { AddAtmService } from './add-atm.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CustomValidator } from '../validation/CustomValidator';
+import { MainService } from '../main/main.service';
 
 @Component({
   selector: 'app-add-atm',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    ReactiveFormsModule,
+  ],
+  providers: [
+    CustomValidator
   ],
   templateUrl: './add-atm.component.html',
   styleUrl: './add-atm.component.scss'
 })
 export class AddAtmComponent {
 
-  atmId: string = '';
-  serialNo: string = '';
-  type: string = '';
-  clientName: string = '';
-  location: string = '';
-  phone: string = '';
+  constructor(
+    private atmService: AddAtmService,
+    private mainService: MainService
+  ){}
 
-  constructor(private atmService: AddAtmService){}
+  atmForm = new FormGroup({
+      atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator]),
+      serialNo: new FormControl(''),
+      type: new FormControl(''),
+      clientName: new FormControl(''),
+      location: new FormControl(''),
+      phone: new FormControl('')
+  });
 
-  public addAtm(atmForm: {atmId: string,
-                                 serialNo: string,
-                                     type: string,
-                               clientName: string, 
-                                 location: string, 
-                                    phone: string}): void {
+  get atmId() {
+    return this.atmForm.get('atmId');
+  }
 
-      this.atmService.addAtm(atmForm).subscribe(() => {
-          console.log("Ok!");
-      });
+  public addAtm(): void {
+    
+    this.atmService.addAtm(this.atmForm.value).subscribe(() => {
+        console.log("Ok!");
+        location.reload();
+        alert("Maszyna " + this.atmForm.value.atmId + " została dodana do bazy.");
+    });
   }
 }

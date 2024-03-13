@@ -1,42 +1,50 @@
-<form #atmForm="ngForm" (ngSubmit)="addAtm(atmForm.value)" ngNativeValidate>
+<form [formGroup]="atmForm" (ngSubmit)="addAtm()">
     
     <div class="form-group">
         <div class="clientOption">Identyfikator: </div>
-        <input type="text" [(ngModel)]="atmId" name="atmId">
-
+        <input maxlength="10" type="text" id="atmId" formControlName="atmId">
+    </div>
+    <div style="color: red;" *ngIf="atmId && atmId.invalid && atmId.touched">
+    <div *ngIf="atmId.errors?.['required']">
+        Puste pole.
+    </div>
+    <div *ngIf="atmId.errors?.['minlength']">
+       Identyfikator musi zawierać conajmniej 8 znaków.
+    </div>
+    <div *ngIf="atmId.errors?.['allUpperCaseValidator']">
+       Identyfikator musi zawierać same duże litery.
+    </div>
+    <div *ngIf="atmId.errors?.['noExists']">
+        666.
+     </div>
     </div>
 
     <div class="form-group">
         <div class="clientOption">Numer seryjny: </div>
-        <input type="text" [(ngModel)]="serialNo" name="serialNo">
+        <input maxlength="20" type="text" formControlName="serialNo">
     </div>
 
     <div class="form-group">
         <div class="clientOption">Typ: </div>
-        <input type="text" [(ngModel)]="type" name="type">
+        <input maxlength="20" type="text" formControlName="type">
     </div>
 
     <div class="form-group">
         <div class="clientOption">Nazwa klienta: </div>
-        <input type="text" [(ngModel)]="clientName" name="clientName">
-
+        <input maxlength="20" type="text" formControlName="clientName">
     </div>
 
     <div class="form-group">
         <div class="clientOption">Lokalizacja: </div>
-        <input type="text" [(ngModel)]="location" name="location">
+        <input maxlength="50" type="text" formControlName="location">
     </div>
 
     <div class="form-group">
         <div class="clientOption">Telefon: </div>
-        <input type="text" [(ngModel)]="phone" name="phone">
+        <input maxlength="20" type="text" formControlName="phone">
     </div>
 
     <div class="form-group">
-        <input class="btn-dark" type="submit" value="Dodaj operatora">
+        <input [disabled]="atmForm.invalid" class="add-btn" type="submit" value="Dodaj maszynę">
     </div>
-
-    
 </form>
-
-

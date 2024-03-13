@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteAtmComponent } from './delete-atm.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DeleteAtmComponent', () => {
   
@@ -12,7 +13,8 @@ describe('DeleteAtmComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         DeleteAtmComponent,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule
       ]
     })
     .compileComponents();

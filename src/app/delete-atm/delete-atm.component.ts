@@ -3,7 +3,9 @@ import { CheckAtmDto } from '../dto/CheckAtmDto';
 import { MainService } from '../main/main.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @Component({
   selector: 'app-delete-atm',
@@ -11,6 +13,9 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   templateUrl: './delete-atm.component.html',
   styleUrl: './delete-atm.component.scss',

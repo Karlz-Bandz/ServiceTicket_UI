@@ -23,6 +23,8 @@ export class AddOperatorComponent {
   public addOperator(operatorForm: {name: string, role: string, phone: string}): void {
       this.operatorService.addOperator(operatorForm).subscribe(() => {
           console.log("Ok!");
+          location.reload();
+          alert("Operator " + operatorForm.name + " został dodany do bazy.")
       });
   }
 }

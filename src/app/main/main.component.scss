@@ -1,19 +1,12 @@
 form{
     margin-top: 40px;
+    text-align: center;
 
-    .form-group{
-        margin-top: 10px;
-        text-align: center;
-    
-        .form-select{
-            width: 400px;
-            height: 20px;
+        mat-form-field{
+            width: 60%;
         }
-    
+
         textarea{
-            height: 140px;
-            width: 460px;
-            resize: none;
+            height: 80px;
         }
-    }
 }

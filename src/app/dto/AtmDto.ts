@@ -1,5 +1,5 @@
 export interface AtmDto {
-    atmId: string,
+    atmId: string;
     serialNo: string;
     type: string;
     clientName: string;

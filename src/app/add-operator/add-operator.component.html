@@ -1,9 +1,7 @@
 <form #operatorForm="ngForm" (ngSubmit)="addOperator(operatorForm.value)" ngNativeValidate>
-    
     <div class="form-group">
         <div class="clientOption">Imię i nazwisko: </div>
         <input type="text" [(ngModel)]="name" name="name">
-
     </div>
 
     <div class="form-group">
@@ -19,7 +17,5 @@
     <div class="form-group">
         <input class="btn-dark" type="submit" value="Dodaj operatora">
     </div>
-
-    
 </form>
 

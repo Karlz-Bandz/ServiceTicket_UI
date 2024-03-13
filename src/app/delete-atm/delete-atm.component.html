@@ -1,15 +1,15 @@
 <form #atmForm="ngForm" (ngSubmit)="deleteAtmById(atmForm.value)" ngNativeValidate>
     
-    <div class="form-group">
-        <div class="clientOption">Maszyny: </div>
+    <mat-form-field class="mat-text">
+        <mat-label>Wybierz maszynę</mat-label>
+    <mat-select name="atm" ngModel>
+        @for (atm of atms; track atm) {
+          <mat-option [value]="atm">{{atm.atmId}}</mat-option>
+        }
+    </mat-select>
+    </mat-form-field>
 
-    <select class="form-select" name="atm" ngModel>
-        <option value="" selected disabled hidden>-- Wybierz Maszynę --</option>
-        <option *ngFor="let atm of atms" [ngValue]="atm">{{atm.atmId}}</option>
-    </select>
-    </div>
-
     <div class="form-group">
-        <input class="deleteBtn" type="submit" value="Usuń">
+        <button mat-raised-button color="warn" type="submit">Usuń</button>
     </div>
 </form>
