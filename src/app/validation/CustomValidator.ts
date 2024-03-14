@@ -11,14 +11,6 @@ export class CustomValidator{
     
     constructor(){}
 
-    // static atmIdExistsValidator(mainService: MainService){
-    //     return (control: AbstractControl) => {
-    //         return mainService.getAtmList().map(data => {
-    //             return data == control.value
-    //         })
-    //     }
-    // }
-
     static atmIdExistsValidator(mainService: MainService): AsyncValidatorFn {
         return (control: AbstractControl): Observable<ValidationErrors | null> => {
           return mainService.existsByAtmId(control.value)
@@ -28,7 +20,18 @@ export class CustomValidator{
               )
             );
         };
-      }
+    }
+
+    static selrialNoExistsValidator(mainService: MainService): AsyncValidatorFn {
+      return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        return mainService.existsBySerialNo(control.value)
+          .pipe(
+            map((result: boolean) =>
+              result ? { serialNoNotExists: true } : null
+            )
+          );
+      };
+    }
 
     static allUpperCaseValidator(control: AbstractControl): ValidationErrors | null {
         const value: string = control.value;

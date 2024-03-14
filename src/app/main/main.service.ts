@@ -38,4 +38,8 @@ export class MainService {
   public existsByAtmId(atmId: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseApi}/atm/exists/` + atmId);
   }
+
+  public existsBySerialNo(serialNo: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseApi}/atm/exists/sn/` + serialNo);
+  }
 }

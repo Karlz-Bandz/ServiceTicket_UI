@@ -28,7 +28,8 @@ export class AddAtmComponent {
  atmForm = new FormGroup({
       atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator], 
                                  [CustomValidator.atmIdExistsValidator(this.mainService)]),
-      serialNo: new FormControl(''),
+      serialNo: new FormControl('', [Validators.required, Validators.minLength(8)],
+                                    [CustomValidator.selrialNoExistsValidator(this.mainService)]),
       type: new FormControl(''),
       clientName: new FormControl(''),
       location: new FormControl(''),
@@ -37,6 +38,10 @@ export class AddAtmComponent {
 
   get atmId() {
     return this.atmForm.get('atmId');
+  }
+
+  get serialNo() {
+    return this.atmForm.get('serialNo');
   }
 
   public addAtm(): void {
