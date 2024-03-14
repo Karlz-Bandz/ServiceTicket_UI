@@ -1,0 +1,15 @@
+form{
+    margin-top: 50px;
+    text-align: center;
+
+    mat-form-field{
+        width: 450px;
+        margin: 13px;
+        display: inline-block;
+
+        mat-error{
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+}

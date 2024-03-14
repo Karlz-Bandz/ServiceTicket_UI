@@ -3,10 +3,12 @@ form{
     text-align: center;
 
         mat-form-field{
-            width: 60%;
+            width: 450px;
+            margin: 13px;
+            display: inline-block;
         }
 
         textarea{
-            height: 80px;
+            height: 150px;
         }
 }

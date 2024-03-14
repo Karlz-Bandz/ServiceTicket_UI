@@ -9,7 +9,7 @@ describe('AddAtmService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule
+        HttpClientModule,
       ]
     });
     service = TestBed.inject(AddAtmService);

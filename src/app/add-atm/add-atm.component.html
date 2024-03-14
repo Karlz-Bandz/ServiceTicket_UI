@@ -1,62 +1,59 @@
 <form [formGroup]="atmForm" (ngSubmit)="addAtm()">
     
-    <div class="form-group">
-        <div class="clientOption">Identyfikator: </div>
-        <input maxlength="10" type="text" id="atmId" formControlName="atmId">
-    </div>
-    <div style="color: red;" *ngIf="atmId && atmId.invalid && atmId.touched">
-    <div *ngIf="atmId.errors?.['required']">
-        Pole nie może być puste.
-    </div>
-    <div *ngIf="atmId.errors?.['minlength']">
-       Identyfikator musi zawierać conajmniej 8 znaków.
-    </div>
-    <div *ngIf="atmId.errors?.['allUpperCaseValidator']">
-       Identyfikator nie może zawierać małych liter.
-    </div>
-    <div *ngIf="atmId.errors?.['atmNotExists']">
-        Maszyna o podanym identyfikatorze już istnieje.
-     </div>
-    </div>
+    <mat-form-field>
+        <mat-label>Identyfikator</mat-label>
+           <input matInput type="text" formControlName="atmId" name="atmId">
+            @if (atmId?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+            @if (atmId?.hasError('minlength')) {
+              <mat-error>Identyfikator musi zawierać conajmniej 8 znaków.</mat-error>
+            }
+            @if (atmId?.hasError('allUpperCaseValidator')) {
+              <mat-error>Identyfikator nie może zawierać małych liter.</mat-error>
+            } 
+            @if (atmId?.hasError('atmNotExists')) {
+              <mat-error>Maszyna o podanym identyfikatorze już istnieje.</mat-error>
+            }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Numer seryjny</mat-label>
+           <input matInput type="text" formControlName="serialNo" name="serialNo">
+            @if (serialNo?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+            @if (serialNo?.hasError('minlength')) {
+              <mat-error>Identyfikator musi zawierać conajmniej 8 znaków.</mat-error>
+            }
+            @if (serialNo?.hasError('serialNoNotExists')) {
+              <mat-error>Maszyna o podanym numerze seryjnym już istnieje.</mat-error>
+            }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Typ</mat-label>
+        <input matInput type="text" formControlName="type" name="type">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Nazwa klienta</mat-label>
+        <input matInput type="text" formControlName="clientName" name="clientName">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Lokalizacja</mat-label>
+        <input matInput type="text" formControlName="location" name="location">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefon</mat-label>
+        <input matInput type="text" formControlName="phone" name="phone">
+    </mat-form-field>
 
     <div class="form-group">
-        <div class="clientOption">Numer seryjny: </div>
-        <input maxlength="20" type="text" formControlName="serialNo">
-    </div>
-
-    <div style="color: red;" *ngIf="serialNo && serialNo.invalid && serialNo.touched">
-        <div *ngIf="serialNo.errors?.['required']">
-            Pole nie może być puste.
-        </div>
-        <div *ngIf="serialNo.errors?.['minlength']">
-           Identyfikator musi zawierać conajmniej 8 znaków.
-        </div>
-        <div *ngIf="serialNo.errors?.['serialNoNotExists']">
-            Maszyna o podanym numerze seryjnym już istnieje.
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="clientOption">Typ: </div>
-        <input maxlength="20" type="text" formControlName="type">
-    </div>
-
-    <div class="form-group">
-        <div class="clientOption">Nazwa klienta: </div>
-        <input maxlength="20" type="text" formControlName="clientName">
-    </div>
-
-    <div class="form-group">
-        <div class="clientOption">Lokalizacja: </div>
-        <input maxlength="50" type="text" formControlName="location">
-    </div>
-
-    <div class="form-group">
-        <div class="clientOption">Telefon: </div>
-        <input maxlength="20" type="text" formControlName="phone">
-    </div>
-
-    <div class="form-group">
-        <input [disabled]="atmForm.invalid" class="add-btn" type="submit" value="Dodaj maszynę">
+        
+        <!-- <input [disabled]="atmForm.invalid" class="add-btn" type="submit" value="Dodaj maszynę"> -->
+        <button mat-raised-button color="primary" [disabled]="atmForm.invalid" type="submit">Dodaj maszynę</button>
     </div>
 </form>

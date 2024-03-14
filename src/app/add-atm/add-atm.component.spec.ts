@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddAtmComponent } from './add-atm.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AddAtmComponent', () => {
   let component: AddAtmComponent;
@@ -11,7 +12,8 @@ describe('AddAtmComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         AddAtmComponent,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule
       ]
     })
     .compileComponents();
