@@ -34,4 +34,8 @@ export class MainService {
   public deleteAtmById(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseApi}/atm/delete/` + id);
   }
+
+  public existsByAtmId(atmId: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseApi}/atm/exists/` + atmId);
+  }
 }

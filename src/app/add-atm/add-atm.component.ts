@@ -25,8 +25,9 @@ export class AddAtmComponent {
     private mainService: MainService
   ){}
 
-  atmForm = new FormGroup({
-      atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator]),
+ atmForm = new FormGroup({
+      atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator], 
+                                 [CustomValidator.atmIdExistsValidator(this.mainService)]),
       serialNo: new FormControl(''),
       type: new FormControl(''),
       clientName: new FormControl(''),

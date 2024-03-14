@@ -6,16 +6,16 @@
     </div>
     <div style="color: red;" *ngIf="atmId && atmId.invalid && atmId.touched">
     <div *ngIf="atmId.errors?.['required']">
-        Puste pole.
+        Pole nie może być puste.
     </div>
     <div *ngIf="atmId.errors?.['minlength']">
        Identyfikator musi zawierać conajmniej 8 znaków.
     </div>
     <div *ngIf="atmId.errors?.['allUpperCaseValidator']">
-       Identyfikator musi zawierać same duże litery.
+       Identyfikator nie może zawierać małych liter.
     </div>
-    <div *ngIf="atmId.errors?.['noExists']">
-        666.
+    <div *ngIf="atmId.errors?.['atmNotExists']">
+        Maszyna o podanym identyfikatorze już istnieje.
      </div>
     </div>
 
