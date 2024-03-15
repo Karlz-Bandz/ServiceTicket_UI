@@ -1,1 +1,34 @@
-<p>main works!</p>
+<form #pdfForm="ngForm" (ngSubmit)="submitPdf(pdfForm.value)" ngNativeValidate>
+    
+        <mat-form-field>
+            <mat-label>Wybierz identyfikator</mat-label>
+        <mat-select name="atmId" ngModel>
+            @for (atm of resultsAtm; track atm.id) {
+              <mat-option [value]="atm.id">{{atm.atmId}}</mat-option>
+            }
+        </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Wybierz operatora</mat-label>
+        <mat-select name="operatorId" ngModel>
+            @for (operator of resultsOperator; track operator.id) {
+              <mat-option [value]="operator.id">{{operator.name}}</mat-option>
+            }
+        </mat-select>
+        </mat-form-field>
+     
+        <mat-form-field>
+            <mat-label>Opis klienta</mat-label>
+            <textarea matInput type="text" [(ngModel)]="clientDescription" name="clientDescription"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Opis operatora</mat-label>
+            <textarea matInput type="text" [(ngModel)]="operatorDescription" name="operatorDescription"></textarea>
+        </mat-form-field>
+          
+        <div class="form-group">
+            <button mat-raised-button color="primary" type="submit">Eksportuj PDF</button>
+        </div>
+</form>

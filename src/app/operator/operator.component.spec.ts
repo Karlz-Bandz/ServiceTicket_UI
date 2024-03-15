@@ -1,24 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainComponent } from './main.component';
+import { OperatorComponent } from './operator.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
+describe('OperatorComponent', () => {
+  let component: OperatorComponent;
+  let fixture: ComponentFixture<OperatorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-      MainComponent,
-      HttpClientModule,
-      BrowserAnimationsModule
+        OperatorComponent,
+        HttpClientModule,
+        RouterTestingModule
     ]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MainComponent);
+    fixture = TestBed.createComponent(OperatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
