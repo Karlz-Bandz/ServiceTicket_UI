@@ -33,14 +33,12 @@ export class AddAtmComponent {
   ){}
 
  atmForm = new FormGroup({
-      atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator], 
-                                 [CustomValidator.atmIdExistsValidator(this.mainService)]),
-      serialNo: new FormControl('', [Validators.required, Validators.minLength(8)],
-                                    [CustomValidator.selrialNoExistsValidator(this.mainService)]),
-      type: new FormControl(''),
-      clientName: new FormControl(''),
-      location: new FormControl(''),
-      phone: new FormControl('')
+      atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator], [CustomValidator.atmIdExistsValidator(this.mainService)]),
+      serialNo: new FormControl('', [Validators.required, Validators.minLength(8)], [CustomValidator.selrialNoExistsValidator(this.mainService)]),
+      clientName: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required]),
+      location: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required])
   });
 
   get atmId() {
@@ -49,6 +47,22 @@ export class AddAtmComponent {
 
   get serialNo() {
     return this.atmForm.get('serialNo');
+  }
+
+  get clientName() {
+    return this.atmForm.get('clientName');
+  }
+
+  get type() {
+    return this.atmForm.get('type');
+  }
+
+  get location() {
+    return this.atmForm.get('location');
+  }
+
+  get phone() {
+    return this.atmForm.get('phone');
   }
 
   public addAtm(): void {

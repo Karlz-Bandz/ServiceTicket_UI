@@ -2,7 +2,7 @@
     
     <mat-form-field>
         <mat-label>Identyfikator</mat-label>
-           <input matInput type="text" formControlName="atmId" name="atmId">
+           <input matInput type="text" formControlName="atmId" name="atmId" maxlength="10">
             @if (atmId?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }
@@ -19,7 +19,7 @@
 
     <mat-form-field>
         <mat-label>Numer seryjny</mat-label>
-           <input matInput type="text" formControlName="serialNo" name="serialNo">
+           <input matInput type="text" formControlName="serialNo" name="serialNo" maxlength="20">
             @if (serialNo?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }
@@ -32,28 +32,38 @@
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Typ</mat-label>
-        <input matInput type="text" formControlName="type" name="type">
+        <mat-label>Nazwa klienta</mat-label>
+            <input matInput type="text" formControlName="clientName" name="clientName" maxlength="20">
+            @if (clientName?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Nazwa klienta</mat-label>
-        <input matInput type="text" formControlName="clientName" name="clientName">
+        <mat-label>Typ</mat-label>
+            <input matInput type="text" formControlName="type" name="type">
+            @if (type?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Lokalizacja</mat-label>
         <input matInput type="text" formControlName="location" name="location">
+            @if (location?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Telefon</mat-label>
         <input matInput type="text" formControlName="phone" name="phone">
+            @if (phone?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
     </mat-form-field>
 
     <div class="form-group">
-        
-        <!-- <input [disabled]="atmForm.invalid" class="add-btn" type="submit" value="Dodaj maszynę"> -->
-        <button mat-raised-button color="primary" [disabled]="atmForm.invalid" type="submit">Dodaj maszynę</button>
+         <button mat-raised-button color="primary" [disabled]="atmForm.invalid" type="submit">Dodaj maszynę</button>
     </div>
 </form>

@@ -1,12 +1,17 @@
 .header{
-    background-color: rgb(55, 116, 55);
+    background-color: rgba(11, 117, 11, 0.973);
     color: white;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 30px;
     
     h1{
         cursor: pointer;
-       
+        margin: 0;
+    }
+    .sub-header{
+        padding-bottom: 20px;
+        font-weight: bold;
+        font-size: 20px;
     }
     .navbar{
         text-align: center;
