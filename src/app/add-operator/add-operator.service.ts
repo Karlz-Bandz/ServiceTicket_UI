@@ -13,7 +13,7 @@ export class AddOperatorService {
 
   private baseApi = environment.apiBaseUrl;
 
-  public addOperator(operatorDto: OperatorDto): Observable<OperatorDto>{
-    return this.http.post<OperatorDto>(`${this.baseApi}/operator/add`, operatorDto);
+  public addOperator(operatorDto: any): Observable<OperatorDto>{
+    return this.http.post<any>(`${this.baseApi}/operator/add`, operatorDto);
   }
 }

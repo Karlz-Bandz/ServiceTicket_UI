@@ -33,7 +33,7 @@
 
     <mat-form-field>
         <mat-label>Nazwa klienta</mat-label>
-            <input matInput type="text" formControlName="clientName" name="clientName" maxlength="20">
+            <input matInput type="text" formControlName="clientName" name="clientName" maxlength="120">
             @if (clientName?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }
@@ -45,6 +45,9 @@
             @if (type?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }
+            @if (type?.hasError('allUpperCaseValidator')) {
+              <mat-error>Typ nie może zawierać małych liter.</mat-error>
+            } 
     </mat-form-field>
 
     <mat-form-field>
@@ -61,9 +64,13 @@
             @if (phone?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }
+            @if (phone?.hasError('phoneNotValid')) {
+                <mat-error>Pole może zawierać tylko spacje, + lub cyfry.</mat-error>
+            }
     </mat-form-field>
 
     <div class="form-group">
          <button mat-raised-button color="primary" [disabled]="atmForm.invalid" type="submit">Dodaj maszynę</button>
+         <button mat-button style="margin-top: 8px;" routerLink="/atm">Wróć</button>
     </div>
 </form>

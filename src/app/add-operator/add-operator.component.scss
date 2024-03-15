@@ -1,0 +1,19 @@
+form{
+    margin-top: 50px;
+    text-align: center;
+
+    mat-form-field{
+        width: 60%;
+        margin: 13px;
+        display: inline-block;
+
+        mat-error{
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+
+    button{
+        margin-top: 10px;
+    }
+}

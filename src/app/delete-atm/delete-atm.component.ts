@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-delete-atm',
@@ -15,7 +16,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     FormsModule,
     MatButtonModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule
   ],
   templateUrl: './delete-atm.component.html',
   styleUrl: './delete-atm.component.scss',

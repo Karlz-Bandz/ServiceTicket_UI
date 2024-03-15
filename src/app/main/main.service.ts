@@ -42,4 +42,8 @@ export class MainService {
   public existsBySerialNo(serialNo: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseApi}/atm/exists/sn/` + serialNo);
   }
+
+  public existsByOperatorName(operatorName: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseApi}/operator/exists/` + operatorName);
+  }
 }

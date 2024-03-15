@@ -1,21 +1,38 @@
-<form #operatorForm="ngForm" (ngSubmit)="addOperator(operatorForm.value)" ngNativeValidate>
-    <div class="form-group">
-        <div class="clientOption">Imię i nazwisko: </div>
-        <input type="text" [(ngModel)]="name" name="name">
-    </div>
+<form [formGroup]="operatorForm" (ngSubmit)="addOperator()">
+   
+    <mat-form-field>
+        <mat-label>Imię i nazwisko</mat-label>
+            <input matInput type="text" formControlName="name" name="name">
+            @if (name?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+            @if (name?.hasError('operatorNameNotExists')) {
+                <mat-error>Operator już istnieje.</mat-error>
+            }
+    </mat-form-field>
 
-    <div class="form-group">
-        <div class="clientOption">Stanowisko: </div>
-        <input type="text" [(ngModel)]="role" name="role">
-    </div>
+    <mat-form-field>
+        <mat-label>Stanowisko</mat-label>
+            <input matInput type="text" formControlName="role" name="role">
+            @if (role?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+    </mat-form-field>
 
+    <mat-form-field>
+        <mat-label>Telefon</mat-label>
+            <input matInput type="text" formControlName="phone" name="phone">
+            @if (phone?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+            @if (phone?.hasError('phoneNotValid')) {
+                <mat-error>Pole może zawierać tylko spacje, + lub cyfry.</mat-error>
+            }
+    </mat-form-field>
+   
     <div class="form-group">
-        <div class="clientOption">Telefon: </div>
-        <input type="text" [(ngModel)]="phone" name="phone">
-    </div>
-
-    <div class="form-group">
-        <input class="btn-dark" type="submit" value="Dodaj operatora">
-    </div>
+        <button mat-raised-button color="primary" [disabled]="operatorForm.invalid" type="submit">Dodaj operatora</button>
+        <button mat-button style="margin-top: 8px;" routerLink="/operator">Wróć</button>
+   </div>
 </form>
 

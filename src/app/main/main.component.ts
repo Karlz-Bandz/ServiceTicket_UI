@@ -53,6 +53,8 @@ export class MainComponent implements OnInit{
 
       this.mainService.export(pdfForm).subscribe(() => {
         console.log("Ok!");
+        location.reload();
+        alert("Zlecenie serwisowe pomyślnie wyeksportowane.");
       });
   }
 }

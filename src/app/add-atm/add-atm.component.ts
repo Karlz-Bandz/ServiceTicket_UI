@@ -7,6 +7,7 @@ import { MainService } from '../main/main.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-atm',
@@ -17,7 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   providers: [
     CustomValidator
@@ -36,9 +38,9 @@ export class AddAtmComponent {
       atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator], [CustomValidator.atmIdExistsValidator(this.mainService)]),
       serialNo: new FormControl('', [Validators.required, Validators.minLength(8)], [CustomValidator.selrialNoExistsValidator(this.mainService)]),
       clientName: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required, CustomValidator.allUpperCaseValidator]),
       location: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required])
+      phone: new FormControl('', [Validators.required, CustomValidator.contactNumberValidator])
   });
 
   get atmId() {

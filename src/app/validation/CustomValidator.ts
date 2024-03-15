@@ -22,6 +22,17 @@ export class CustomValidator{
         };
     }
 
+    static operatorNameExistsValidator(mainService: MainService): AsyncValidatorFn {
+      return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        return mainService.existsByOperatorName(control.value)
+          .pipe(
+            map((result: boolean) =>
+              result ? { operatorNameNotExists: true } : null
+            )
+          );
+      };
+    }
+
     static selrialNoExistsValidator(mainService: MainService): AsyncValidatorFn {
       return (control: AbstractControl): Observable<ValidationErrors | null> => {
         return mainService.existsBySerialNo(control.value)
@@ -31,6 +42,11 @@ export class CustomValidator{
             )
           );
       };
+    }
+
+    static contactNumberValidator(control: AbstractControl): ValidationErrors | null {
+        const value: string = control.value;
+        return  value && !value.match("[+\\s\\d]+") ?  { phoneNotValid: true }: null;
     }
 
     static allUpperCaseValidator(control: AbstractControl): ValidationErrors | null {
