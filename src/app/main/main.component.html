@@ -2,9 +2,9 @@
     
         <mat-form-field>
             <mat-label>Wybierz identyfikator</mat-label>
-        <mat-select name="atmId" ngModel>
-            @for (atm of resultsAtm; track atm.id) {
-              <mat-option [value]="atm.id">{{atm.atmId}}</mat-option>
+        <mat-select name="atm" ngModel>
+            @for (atm of resultsAtm; track atm) {
+              <mat-option [value]="atm">{{atm.atmId}}</mat-option>
             }
         </mat-select>
         </mat-form-field>

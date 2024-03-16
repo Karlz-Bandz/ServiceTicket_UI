@@ -1,0 +1,29 @@
+<div class="main-container">
+  
+   
+    <mat-form-field>
+        <mat-label>hhhhhhhhhhhhhh</mat-label>
+        <input matInput #atmId>
+    </mat-form-field>
+    <!-- <mat-form-field>
+        <mat-label>Identyfikator</mat-label>
+            <input matInput type="text" formControlName="atmId" name="atmId"> -->
+            <!-- @if (type?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+            @if (type?.hasError('allUpperCaseValidator')) {
+              <mat-error>Typ nie może zawierać małych liter.</mat-error>
+            }  -->
+    <!-- </mat-form-field> -->
+
+    <div class="form-group">
+        <button mat-raised-button color="primary" (click)="searchAtm(atmId.value)">Szukaj</button>
+        <button mat-button style="margin-top: 8px;" routerLink="/operator">Wróć</button>
+    </div>
+
+    {{atm?.atmId}}<br>
+    {{atm?.location}}<br>
+    {{atm?.type}}<br>
+    {{atm?.clientName}}
+</div>
+

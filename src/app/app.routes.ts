@@ -6,6 +6,7 @@ import { DeleteOperatorComponent } from './delete-operator/delete-operator.compo
 import { AtmComponent } from './atm/atm.component';
 import { AddAtmComponent } from './add-atm/add-atm.component';
 import { DeleteAtmComponent } from './delete-atm/delete-atm.component';
+import { SearchAtmComponent } from './search-atm/search-atm.component';
 
 export const routes: Routes = [
     {path: '', component: MainComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path: 'operator/delete', component: DeleteOperatorComponent},
     {path: 'atm', component: AtmComponent},
     {path: 'atm/add', component: AddAtmComponent},
-    {path: 'atm/delete', component: DeleteAtmComponent}
+    {path: 'atm/delete', component: DeleteAtmComponent},
+    {path: 'atm/search', component: SearchAtmComponent}
 ];

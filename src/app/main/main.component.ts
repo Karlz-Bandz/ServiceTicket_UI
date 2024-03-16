@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from './main.service';
 import { CheckAtmDto } from '../dto/CheckAtmDto';
+import { MasterTicketDto } from '../dto/MasterTicketDto';
 import { CommonModule } from '@angular/common';
 import { CheckOperatorDto } from '../dto/CheckOperatorDto';
 import { FormsModule } from '@angular/forms';
@@ -44,17 +45,28 @@ export class MainComponent implements OnInit{
     });
   }
 
-  public submitPdf(pdfForm: {atmId: number, 
+  public submitPdf(pdfForm: {atm: CheckAtmDto, 
           operatorId: number,
           clientDescription: string,
           operatorDescription: string}): void{
 
-      console.log(pdfForm);
+      const atmObject = new MasterTicketDto(pdfForm.atm.id, pdfForm.operatorId, pdfForm.clientDescription, pdfForm.operatorDescription);
 
-      this.mainService.export(pdfForm).subscribe(() => {
-        console.log("Ok!");
+      this.mainService.export(atmObject).subscribe(resp => {
+        this.downloadPdf(resp, 'Zlecenie serwisowe ' + pdfForm.atm.atmId + '(WEB)');
         location.reload();
-        alert("Zlecenie serwisowe pomyślnie wyeksportowane.");
+        alert("PDF pobrany pomyślnie dla maszyny " + pdfForm.atm.atmId);
       });
+  }
+
+  private downloadPdf(blob: Blob, fileName: string): void{
+      const fileURL = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.style.display = 'none';
+      a.href = fileURL;
+      a.download = fileName;
+      a.click();
+      window.URL.revokeObjectURL(fileURL);
   }
 }
