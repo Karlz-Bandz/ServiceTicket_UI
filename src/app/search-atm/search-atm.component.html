@@ -1,29 +1,57 @@
 <div class="main-container">
-  
-   
-    <mat-form-field>
-        <mat-label>hhhhhhhhhhhhhh</mat-label>
-        <input matInput #atmId>
-    </mat-form-field>
-    <!-- <mat-form-field>
-        <mat-label>Identyfikator</mat-label>
-            <input matInput type="text" formControlName="atmId" name="atmId"> -->
-            <!-- @if (type?.hasError('required')) {
-              <mat-error>Pole nie może być puste.</mat-error>
+
+    <div class="search-box">
+
+        <div class="provide-form">
+
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="bold">Identyfikator</mat-button-toggle>
+                <mat-button-toggle value="italic">Numer Seryjny</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <mat-form-field>
+               <mat-label>Identyfikator</mat-label>
+               <input matInput #atmId>
+            </mat-form-field>
+            
+            @if(errorMessage){
+                <p>Maszyna o podanym identyfikatorze nie istnieje.</p>
             }
-            @if (type?.hasError('allUpperCaseValidator')) {
-              <mat-error>Typ nie może zawierać małych liter.</mat-error>
-            }  -->
-    <!-- </mat-form-field> -->
+        </div> 
 
-    <div class="form-group">
-        <button mat-raised-button color="primary" (click)="searchAtm(atmId.value)">Szukaj</button>
-        <button mat-button style="margin-top: 8px;" routerLink="/operator">Wróć</button>
+        <div class="atm-data">
+           <table>
+            <tr>
+                <td>Nazwa klienta:</td>
+                <td>{{atm?.clientName}}</td>
+            </tr>
+            <tr>
+                <td>Identyfikator:</td>
+                <td>{{atm?.atmId}}</td>
+            </tr>
+            <tr>
+                <td>Numer seryjny:</td>
+                <td>{{atm?.serialNo}}</td>
+            </tr>
+            <tr>
+                <td>Lokalizacja:</td>
+                <td>{{atm?.location}}</td>
+            </tr>
+            <tr>
+                <td>Typ:</td>
+                <td>{{atm?.type}}</td>
+            </tr>
+            <tr>
+                <td>Telefon:</td>
+                <td>{{atm?.phone}}</td>
+            </tr>
+            </table>
+        </div>
     </div>
-
-    {{atm?.atmId}}<br>
-    {{atm?.location}}<br>
-    {{atm?.type}}<br>
-    {{atm?.clientName}}
+    
+    <div class="button-group">
+        <button mat-raised-button color="primary" (click)="searchAtm(atmId.value)">Szukaj</button>
+        <button mat-button routerLink="/atm">Wróć</button>
+    </div>
 </div>
 

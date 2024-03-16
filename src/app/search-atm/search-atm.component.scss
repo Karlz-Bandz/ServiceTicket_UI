@@ -1,0 +1,43 @@
+.main-container{
+    margin-top: 20px;
+    // padding-bottom: 50px;
+    text-align: center;
+   
+    .search-box{
+        // background-color: #333;
+        border-radius: 5px;
+        display: inline-block;
+        // padding: 50px;
+
+        .provide-form{
+            mat-form-field{
+               width: 90%;
+               margin-top: 15px;
+               margin-bottom: 0px;
+            }
+            p{
+                margin-top: 0px;
+                color: red;
+            }
+        }
+       
+        .atm-data{
+            table {
+                border:1px solid black;
+                border-collapse: collapse;
+                //color: white;
+
+                td{
+                    border:1px solid black;
+                    width: 400px;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+
+    .button-group{
+        margin-top: 18px;
+        
+    }
+}
