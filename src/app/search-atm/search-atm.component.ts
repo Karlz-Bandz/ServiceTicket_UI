@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,6 +16,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatSelectModule,
     MatFormFieldModule,
@@ -30,23 +31,61 @@ export class SearchAtmComponent {
 
   atm: AtmDto | undefined;
   errorMessage: string = '';
+  viewChange: boolean = true;
+
+  searchForm = new FormGroup({
+    atmId: new FormControl(''),
+    serialNo: new FormControl('')
+  });
 
   constructor(
      private mainService: MainService
   ){}
 
-  public searchAtm(atmId: string): void{
+  public changeFormToSerial(): void{
+    if(this.viewChange){
+        this.viewChange = false;
+        this.atm = undefined;
+        this.errorMessage = '';
+        this.searchForm.reset();
+    }
+  }
 
-    console.log(atmId);
-      this.mainService.findByAtmId(atmId).subscribe((data) => {
-           this.errorMessage = '';
-           this.atm = data;
-           console.log('ok');
+  public changeFormToAtmId(): void{
+    if(!this.viewChange){
+        this.viewChange = true;
+        this.atm = undefined;
+        this.errorMessage = '';
+        this.searchForm.reset();
+      }
+  }
+
+  public searchAtm(): void{
+
+    console.log(this.searchForm);
+      
+    if(this.viewChange){
+      this.mainService.findByAtmId(this.searchForm.value.atmId).subscribe((data) => {
+        this.errorMessage = '';
+        this.atm = data;
+        console.log('ok');
       },
       (error) => {
-           this.atm = undefined;
-           this.errorMessage = "Identyfikator nie istnieje.";
-           console.error('Error:', error);
+        this.atm = undefined;
+        this.errorMessage = "Identyfikator nie istnieje.";
+        console.error('Error:', error);
       });
+    }else{
+      this.mainService.findBySerialNo(this.searchForm.value.serialNo).subscribe((data) => {
+        this.errorMessage = '';
+        this.atm = data;
+        console.log('ok');
+      },
+      (error) => {
+        this.atm = undefined;
+        this.errorMessage = "Numer seryjny nie istnieje.";
+        console.error('Error:', error);
+      });
+    }
   }
 }

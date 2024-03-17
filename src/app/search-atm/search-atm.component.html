@@ -1,21 +1,37 @@
-<div class="main-container">
+<form [formGroup]="searchForm" class="main-container" (ngSubmit)="searchAtm()">
 
     <div class="search-box">
 
         <div class="provide-form">
 
-            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                <mat-button-toggle value="bold">Identyfikator</mat-button-toggle>
-                <mat-button-toggle value="italic">Numer Seryjny</mat-button-toggle>
+            <mat-button-toggle-group value="atmIdBtn">
+                <mat-button-toggle (click)="changeFormToAtmId()" value="atmIdBtn">Identyfikator</mat-button-toggle>
+                <mat-button-toggle (click)="changeFormToSerial()" value="serialNoBtn">Numer Seryjny</mat-button-toggle>
             </mat-button-toggle-group>
 
-            <mat-form-field>
-               <mat-label>Identyfikator</mat-label>
-               <input matInput #atmId>
-            </mat-form-field>
-            
-            @if(errorMessage){
-                <p>Maszyna o podanym identyfikatorze nie istnieje.</p>
+            @if(viewChange){
+
+                <mat-form-field>
+                    <mat-label>Identyfikator</mat-label>
+                    <input matInput formControlName="atmId" name="atmId">
+                </mat-form-field>
+                 
+                 @if(errorMessage){
+                     <p>Maszyna o podanym identyfikatorze nie istnieje.</p>
+                 }
+
+            }
+
+            @if(!viewChange){
+
+                <mat-form-field>
+                    <mat-label>Numer seryjny</mat-label>
+                    <input matInput formControlName="serialNo" name="serialNo">
+                </mat-form-field>
+                 
+                 @if(errorMessage){
+                     <p>Maszyna o podanym s/n nie istnieje.</p>
+                 }
             }
         </div> 
 
@@ -50,8 +66,8 @@
     </div>
     
     <div class="button-group">
-        <button mat-raised-button color="primary" (click)="searchAtm(atmId.value)">Szukaj</button>
+        <button mat-raised-button color="primary" type="submit">Szukaj</button>
         <button mat-button routerLink="/atm">Wróć</button>
     </div>
-</div>
+</form>
 

@@ -60,7 +60,11 @@ export class MainService {
     return this.http.get<boolean>(`${this.baseApi}/operator/exists/` + operatorName);
   }
 
-  public findByAtmId(atmId: string): Observable<AtmDto> {
+  public findByAtmId(atmId: string | undefined | null): Observable<AtmDto> {
     return this.http.get<AtmDto>(`${this.baseApi}/atm/find/name/` + atmId);
+  }
+
+  public findBySerialNo(serialNo: string | undefined | null): Observable<AtmDto> {
+    return this.http.get<AtmDto>(`${this.baseApi}/atm/find/serial/` + serialNo);
   }
 }
