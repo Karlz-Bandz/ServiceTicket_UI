@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, map, shareReplay } from 'rxjs';
 import { CheckAtmDto } from '../dto/CheckAtmDto';
 import { CheckOperatorDto } from '../dto/CheckOperatorDto';
 import { MasterTicketDto } from '../dto/MasterTicketDto';
+
+import { FormGroup } from '@angular/forms';
 import { AtmDto } from '../dto/AtmDto';
 
 @Injectable({
@@ -65,6 +67,10 @@ export class MainService {
   }
 
   public findBySerialNo(serialNo: string | undefined | null): Observable<AtmDto> {
-    return this.http.get<AtmDto>(`${this.baseApi}/atm/find/serial/` + serialNo);
+    return this.http.get<AtmDto>(`${this.baseApi}/atm/find/sn/` + serialNo);
+  }
+
+  public authenticate(formGroup: FormGroup): Observable<any>{
+    return this.http.post<any>(`${this.baseApi}/auth/authenticate`, formGroup.value).pipe(shareReplay());
   }
 }

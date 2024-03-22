@@ -7,9 +7,11 @@ import { AtmComponent } from './atm/atm.component';
 import { AddAtmComponent } from './add-atm/add-atm.component';
 import { DeleteAtmComponent } from './delete-atm/delete-atm.component';
 import { SearchAtmComponent } from './search-atm/search-atm.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 export const routes: Routes = [
-    {path: '', component: MainComponent},
+    {path: '', component: LoginPageComponent},
+    {path: 'service', component: MainComponent},
     {path: 'operator', component: OperatorComponent},
     {path: 'operator/add', component: AddOperatorComponent},
     {path: 'operator/delete', component: DeleteOperatorComponent},

@@ -7,7 +7,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   imports: [RouterOutlet,
   RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'ServiceTicket_UI';

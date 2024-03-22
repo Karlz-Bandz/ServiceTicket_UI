@@ -1,0 +1,22 @@
+<form [formGroup]="authForm" (ngSubmit)="logIn()">
+    
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" name="email">
+            <!-- @if (role?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            } -->
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Hasło</mat-label>
+            <input matInput type="password" formControlName="password" name="password">
+            <!-- @if (role?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            } -->
+    </mat-form-field>
+
+    <div class="form-group">
+        <button mat-raised-button color="primary" type="submit">Zaloguj</button>
+    </div>
+</form>
