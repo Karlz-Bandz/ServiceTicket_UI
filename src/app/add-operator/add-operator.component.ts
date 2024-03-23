@@ -91,13 +91,13 @@ export class AddOperatorComponent {
 
     if(role === "ADMIN"){
         this.operatorService.registerAdmin(operator).subscribe(() => {
+            alert("Admin " + operator?.name + " został dodany do bazy."); 
             location.reload();
-            alert("Operator " + operator?.name + " został dodany do bazy.");
         });
     }else if(role === "USER"){
         this.operatorService.registerOperator(operator).subscribe(() => {
-            location.reload();
             alert("Operator " + operator?.name + " został dodany do bazy.");
+            location.reload();
         });
     }
   }

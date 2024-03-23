@@ -16,6 +16,10 @@ export class AppComponent {
     return localStorage.getItem('btn') === 'true';
   }
 
+  isAdmin(): boolean {
+    return localStorage.getItem('role') === "ROLE_ADMIN"
+  }
+
   logout(): void{
     localStorage.removeItem('btn');
     localStorage.removeItem('email');

@@ -6,7 +6,9 @@
     <ul class="nav_links">
           @if(isLoggedIn()){
           <li><a routerLink="/service">Serwis</a></li>
+          @if(isAdmin()){
           <li><a routerLink="/operator">Operatorzy</a></li>
+          }
           <li><a routerLink="/atm">Maszyny</a></li>
           
           <li class="logoutli"><a routerLink="" class="logoutbtn" (click)="logout()">Wyloguj</a></li>
