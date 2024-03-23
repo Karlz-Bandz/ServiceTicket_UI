@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-add-atm',
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule
   ],
   providers: [
     CustomValidator
@@ -38,10 +40,12 @@ export class AddAtmComponent {
       atmId: new FormControl('', [Validators.required, Validators.minLength(8), CustomValidator.allUpperCaseValidator], [CustomValidator.atmIdExistsValidator(this.mainService)]),
       serialNo: new FormControl('', [Validators.required, Validators.minLength(8)], [CustomValidator.selrialNoExistsValidator(this.mainService)]),
       clientName: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required, CustomValidator.allUpperCaseValidator]),
+      type: new FormControl('BANKOMAT', [Validators.required]),
       location: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required, CustomValidator.contactNumberValidator])
   });
+
+  types: string[] = ["BANKOMAT", "WPŁATOMAT", "RECYKLER"];
 
   get atmId() {
     return this.atmForm.get('atmId');

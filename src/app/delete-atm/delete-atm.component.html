@@ -1,6 +1,6 @@
 <form #atmForm="ngForm" (ngSubmit)="deleteAtmById(atmForm.value)" ngNativeValidate>
     
-    <mat-form-field class="mat-text">
+    <mat-form-field>
         <mat-label>Wybierz maszynę</mat-label>
     <mat-select name="atm" ngModel>
         @for (atm of atms; track atm) {

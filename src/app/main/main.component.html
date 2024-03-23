@@ -10,15 +10,6 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Wybierz operatora</mat-label>
-        <mat-select name="operatorId" ngModel>
-            @for (operator of resultsOperator; track operator.id) {
-              <mat-option [value]="operator.id">{{operator.name}}</mat-option>
-            }
-        </mat-select>
-        </mat-form-field>
-     
-        <mat-form-field>
             <mat-label>Opis klienta</mat-label>
             <textarea matInput type="text" [(ngModel)]="clientDescription" name="clientDescription"></textarea>
         </mat-form-field>

@@ -11,4 +11,16 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ServiceTicket_UI';
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('btn') === 'true';
+  }
+
+  logout(): void{
+    localStorage.removeItem('btn');
+    localStorage.removeItem('email');
+    localStorage.removeItem('tokenJwt');
+    localStorage.removeItem('role');
+  }
 }
+

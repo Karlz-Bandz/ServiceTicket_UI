@@ -40,14 +40,15 @@
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Typ</mat-label>
-            <input matInput type="text" formControlName="type" name="type">
-            @if (type?.hasError('required')) {
-              <mat-error>Pole nie może być puste.</mat-error>
-            }
-            @if (type?.hasError('allUpperCaseValidator')) {
-              <mat-error>Typ nie może zawierać małych liter.</mat-error>
-            } 
+      <mat-label>Wybierz typ</mat-label>
+      <mat-select formControlName="type">
+      @for (type of types; track type) {
+        <mat-option [value]="type">{{type}}</mat-option>
+      }
+    </mat-select>
+      @if (type?.hasError('required')) {
+        <mat-error>Pole nie może być puste.</mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field>
@@ -60,7 +61,7 @@
 
     <mat-form-field>
         <mat-label>Telefon</mat-label>
-        <input matInput type="text" formControlName="phone" name="phone">
+        <input matInput type="tel" formControlName="phone" name="phone">
             @if (phone?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }

@@ -1,6 +1,6 @@
 .header{
-    background-color: rgba(11, 117, 11, 0.973);
-    color: white;
+    background-color: gray;
+    color: black;
     text-align: center;
     padding-top: 30px;
     
@@ -13,13 +13,13 @@
         font-size: 20px;
     }
     .navbar{
-        text-align: center;
         z-index: 99;
         ul{
             list-style-type: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
+            height: 47px;
             background-color: #333;
         li{
             float: left;
@@ -31,6 +31,10 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+        }
+        .logoutli{
+            float: right;
+        
         }
       }
       li a:hover {

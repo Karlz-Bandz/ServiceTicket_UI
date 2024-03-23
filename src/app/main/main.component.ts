@@ -46,18 +46,22 @@ export class MainComponent implements OnInit{
   }
 
   public submitPdf(pdfForm: {atm: CheckAtmDto, 
-          operatorId: number,
           clientDescription: string,
           operatorDescription: string}): void{
 
-      const atmObject = new MasterTicketDto(pdfForm.atm.id, pdfForm.operatorId, pdfForm.clientDescription, pdfForm.operatorDescription);
+      
+      const email: string | null = localStorage.getItem('email');
 
-      this.mainService.export(atmObject).subscribe(resp => {
-        this.downloadPdf(resp, 'Zlecenie serwisowe ' + pdfForm.atm.atmId + '(WEB)');
-        location.reload();
-        alert("PDF pobrany pomyślnie dla maszyny " + pdfForm.atm.atmId);
-      });
-  }
+      if(email !== null){
+        const atmObject = new MasterTicketDto(pdfForm.atm.id, email, pdfForm.clientDescription, pdfForm.operatorDescription);
+        
+        this.mainService.export(atmObject).subscribe(resp => {
+          this.downloadPdf(resp, 'Zlecenie serwisowe ' + pdfForm.atm.atmId + '(WEB)');
+          location.reload();
+          alert("PDF pobrany pomyślnie dla maszyny " + pdfForm.atm.atmId);
+        });
+      }
+    }
 
   private downloadPdf(blob: Blob, fileName: string): void{
       const fileURL = URL.createObjectURL(blob);
