@@ -3,12 +3,12 @@ import { MainService } from './main.service';
 import { CheckAtmDto } from '../dto/CheckAtmDto';
 import { MasterTicketDto } from '../dto/MasterTicketDto';
 import { CommonModule } from '@angular/common';
-import { CheckOperatorDto } from '../dto/CheckOperatorDto';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
+import { CustomValidator } from '../validation/CustomValidator';
 
 @Component({
   selector: 'app-main',
@@ -19,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
    MatButtonModule,
    MatSelectModule,
    MatFormFieldModule,
-   MatInputModule
+   MatInputModule,
+   ReactiveFormsModule
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
@@ -27,11 +28,12 @@ import { MatInputModule } from '@angular/material/input';
 export class MainComponent implements OnInit{
 
   resultsAtm: CheckAtmDto[] = [];
-  resultsOperator: CheckOperatorDto[] = [];
-  selectedAtmId: number | undefined;
-  selectedOperatorId: number | undefined;
-  operatorDescription: string = '';
-  clientDescription: string = '';
+  
+  pdfForm = new FormGroup({
+      selectedAtm: new FormControl<CheckAtmDto>({id: 0, atmId: ''}, CustomValidator.selectAtmForPdfValidator),
+      operatorDescription: new FormControl(''),
+      clientDescription: new FormControl('', Validators.required)
+  });
 
   constructor(private mainService: MainService){}
 
@@ -39,29 +41,34 @@ export class MainComponent implements OnInit{
     this.mainService.getAtmList().subscribe(data => {
       this.resultsAtm = data;
     });
-
-    this.mainService.getOperatorList().subscribe(data => {
-      this.resultsOperator = data;
-    });
   }
 
-  public submitPdf(pdfForm: {atm: CheckAtmDto, 
-          clientDescription: string,
-          operatorDescription: string}): void{
+  get selectedAtm() {
+    return this.pdfForm.get('selectedAtm');
+  }
 
-      
+  get operatorDescription() {
+    return this.pdfForm.get('operatorDescription');
+  }
+
+  get clientDescription() {
+    return this.pdfForm.get('clientDescription');
+  }
+
+  public submitPdf(): void{
+
       const email: string | null = localStorage.getItem('email');
 
-      if(email !== null){
-        const atmObject = new MasterTicketDto(pdfForm.atm.id, email, pdfForm.clientDescription, pdfForm.operatorDescription);
+      if(this.pdfForm.valid && email !== null){
+        const atmObject = new MasterTicketDto(this.selectedAtm?.value?.id, email, this.clientDescription?.value, this.operatorDescription?.value);
         
         this.mainService.export(atmObject).subscribe(resp => {
-          this.downloadPdf(resp, 'Zlecenie serwisowe ' + pdfForm.atm.atmId + '(WEB)');
+          this.downloadPdf(resp, 'Zlecenie serwisowe ' + this.selectedAtm?.value?.atmId + '(WEB)');
           location.reload();
-          alert("PDF pobrany pomyślnie dla maszyny " + pdfForm.atm.atmId);
+          alert("PDF pobrany pomyślnie dla maszyny " + this.selectedAtm?.value?.atmId);
         });
       }
-    }
+  }
 
   private downloadPdf(blob: Blob, fileName: string): void{
       const fileURL = URL.createObjectURL(blob);

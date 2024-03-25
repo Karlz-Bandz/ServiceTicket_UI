@@ -55,10 +55,8 @@ export class LoginPageComponent implements OnInit{
   });
 
   public logIn(): void{
-    console.log(this.authForm.value);
     this.mainService.authenticate(this.authForm)
     .subscribe((data: any) => {
-      console.log(data.token);
         if(data.token){
           const decodedToken: any = jwtDecode(data.token);
           const authorities = decodedToken.authorities;

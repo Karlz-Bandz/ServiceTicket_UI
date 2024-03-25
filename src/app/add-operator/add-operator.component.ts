@@ -33,7 +33,7 @@ export class AddOperatorComponent {
       name: new FormControl('', [Validators.required], [CustomValidator.operatorNameExistsValidator(this.mainService)]),
       role: new FormControl('OPERATOR', [Validators.required]),
       phone: new FormControl('', [Validators.required, CustomValidator.contactNumberValidator]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required], [CustomValidator.operatorEmailExistsValidator(this.mainService)]),
       password: new FormControl('', [Validators.required])
     }),
     roleForm: new FormGroup({

@@ -62,6 +62,10 @@ export class MainService {
     return this.http.get<boolean>(`${this.baseApi}/operator/exists/` + operatorName);
   }
 
+  public existsByEmail(email: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseApi}/operator/exists/email/` + email);
+  }
+
   public findByAtmId(atmId: string | undefined | null): Observable<AtmDto> {
     return this.http.get<AtmDto>(`${this.baseApi}/atm/find/name/` + atmId);
   }

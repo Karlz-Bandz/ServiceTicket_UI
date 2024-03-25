@@ -7,7 +7,7 @@
             @if (name?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }
-            @if (name?.hasError('operatorNameNotExists')) {
+            @if (name?.hasError('operatorNameExists')) {
                 <mat-error>Operator już istnieje.</mat-error>
             }
     </mat-form-field>
@@ -37,6 +37,9 @@
           <input matInput type="email" formControlName="email" name="email">
           @if (email?.hasError('required')) {
             <mat-error>Pole nie może być puste.</mat-error>
+          }
+          @if (email?.hasError('emailExists')) {
+            <mat-error>Podany email już istnieje.</mat-error>
           }
     </mat-form-field>
 

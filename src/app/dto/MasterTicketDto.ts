@@ -1,10 +1,10 @@
 export class MasterTicketDto {
-    atmId: number;
-    email: string;
-    clientDescription: string;
-    operatorDescription: string;
+    atmId: any;
+    email: any;
+    clientDescription: any;
+    operatorDescription: any;
 
-    constructor(atmId: number, email: string, clientDescription: string, operatorDescription: string){
+    constructor(atmId: any, email: any, clientDescription: any, operatorDescription: any){
         this.atmId = atmId;
         this.email = email;
         this.clientDescription = clientDescription;
