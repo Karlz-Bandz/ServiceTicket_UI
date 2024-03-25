@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MainService } from '../main/main.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
@@ -15,6 +16,7 @@ import { jwtDecode } from 'jwt-decode';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    CommonModule
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
@@ -23,8 +25,10 @@ export class LoginPageComponent implements OnInit{
 
   constructor(
     private mainService: MainService,
-    private router: Router,
+    private router: Router
   ){}
+
+  verified: boolean = true;
 
   ngOnInit(): void {
     if(localStorage.getItem('tokenJwt') !== null){
@@ -58,6 +62,7 @@ export class LoginPageComponent implements OnInit{
     this.mainService.authenticate(this.authForm)
     .subscribe((data: any) => {
         if(data.token){
+          this.verified = true;
           const decodedToken: any = jwtDecode(data.token);
           const authorities = decodedToken.authorities;
           const email = decodedToken.sub;
@@ -71,6 +76,9 @@ export class LoginPageComponent implements OnInit{
         }else{
           alert(data.message);
         }
+    },
+    (error: any) => {
+          this.verified = false;
     });
   }
 }

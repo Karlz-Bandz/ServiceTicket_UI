@@ -6,27 +6,36 @@ form{
     margin-right: auto;
 
     .border{
-        border: solid 1px black;
-        padding: 45px;
+        border: solid 2px #333;
+        padding: 65px;
         border-radius: 20px;
-       
-    mat-form-field{
-        width: 80%;
-        margin: 5px;
-
-        mat-error{
-            font-size: 14px;
-            font-weight: bold;
+    
+        mat-form-field{
+            width: 80%;
         }
-    }
 
-       .form-group{
-           
+        .form-group{
 
-             button{
-                 width: 40%;
-                 height: 40px;
-             }
+            position: relative;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+
+            .err{
+                color: red;
+                font-weight: bold;
+                position: absolute;
+                width: 250px;
+                bottom: 7px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        
+            button{
+                top: 20px;
+                width: 40%;
+                height: 40px;
+            }
         }
     }
 }
