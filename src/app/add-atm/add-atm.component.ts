@@ -42,7 +42,7 @@ export class AddAtmComponent {
       clientName: new FormControl('', [Validators.required]),
       type: new FormControl('BANKOMAT', [Validators.required]),
       location: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required, CustomValidator.contactNumberValidator])
+      phone: new FormControl('', [Validators.required, Validators.pattern('[ +()0-9]+')])
   });
 
   types: string[] = ["BANKOMAT", "WPŁATOMAT", "RECYKLER"];

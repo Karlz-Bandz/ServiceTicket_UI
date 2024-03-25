@@ -65,7 +65,7 @@
             @if (phone?.hasError('required')) {
               <mat-error>Pole nie może być puste.</mat-error>
             }
-            @if (phone?.hasError('phoneNotValid')) {
+            @if (phone?.hasError('pattern')) {
                 <mat-error>Pole może zawierać tylko spacje, + lub cyfry.</mat-error>
             }
     </mat-form-field>

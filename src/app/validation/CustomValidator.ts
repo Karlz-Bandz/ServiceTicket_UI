@@ -61,11 +61,6 @@ export class CustomValidator{
         return value.id === 0 && value.atmId === '' ? { atmFormNotValid: true } : null;
     }
 
-    static contactNumberValidator(control: AbstractControl): ValidationErrors | null {
-        const value: string = control.value;
-        return value && !value.match("[+\\s\\d]+") ?  { phoneNotValid: true } : null;
-    }
-
     static allUpperCaseValidator(control: AbstractControl): ValidationErrors | null {
         const value: string = control.value;
 
