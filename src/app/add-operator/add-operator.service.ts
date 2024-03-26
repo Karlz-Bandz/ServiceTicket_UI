@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
-import { OperatorDto } from '../dto/OperatorDto';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,7 +12,11 @@ export class AddOperatorService {
 
   private baseApi = environment.apiBaseUrl;
 
-  public addOperator(operatorDto: any): Observable<OperatorDto>{
-    return this.http.post<any>(`${this.baseApi}/operator/add`, operatorDto);
+  public registerOperator(operator: any): Observable<void>{
+    return this.http.post<void>(`${this.baseApi}/operator/register`, operator);
+  }
+
+  public registerAdmin(operator: any): Observable<void>{
+    return this.http.post<void>(`${this.baseApi}/operator/register/admin`, operator);
   }
 }

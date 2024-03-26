@@ -1,15 +1,21 @@
 <div class="header">
-<h1 routerLink="/">NCRATLEOS</h1>
-<div class="sub-header">ServiceTicket</div>
+<h1>NCRATLEOS</h1>
+<div class="sub-header">WMC+</div>
 
 <div class="navbar">
     <ul class="nav_links">
+          @if(isLoggedIn()){
+          <li><a routerLink="/service">Serwis</a></li>
+          @if(isAdmin()){
           <li><a routerLink="/operator">Operatorzy</a></li>
+          }
           <li><a routerLink="/atm">Maszyny</a></li>
+          
+          <li class="logoutli"><a routerLink="" class="logoutbtn" (click)="logout()">Wyloguj</a></li>
+          }
     </ul>
 </div>
 </div>
-
 <router-outlet></router-outlet>
 
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 
@@ -14,4 +14,7 @@ import { RouterModule } from '@angular/router';
 })
 export class AtmComponent {
 
+  isAdmin(): boolean {
+      return localStorage.getItem('role') === "ROLE_ADMIN";
+  }
 }

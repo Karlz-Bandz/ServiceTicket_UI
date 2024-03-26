@@ -12,7 +12,7 @@ export class AddAtmService {
 
   private baseApi = environment.apiBaseUrl;
 
-  public addAtm(atmDto: any): Observable<any>{
-    return this.http.post<any>(`${this.baseApi}/atm/add`, atmDto);
+  public addAtm(atm: any): Observable<any>{
+    return this.http.post<any>(`${this.baseApi}/atm/add`, atm);
   }
 }

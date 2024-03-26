@@ -1,7 +1,9 @@
 <div class="main-form">
     <div class="form-group">
+        @if(isAdmin()){
         <button mat-raised-button routerLink="/atm/add">Dodaj maszynę</button>
         <button mat-raised-button routerLink="/atm/delete">Usuń maszynę</button>
-        <button mat-button style="border-radius: 29px; width: 100%;" routerLink="/">Wróć</button>
+        }
+        <button mat-raised-button routerLink="/atm/search">Wyszukaj maszynę</button>
     </div>
 </div>
