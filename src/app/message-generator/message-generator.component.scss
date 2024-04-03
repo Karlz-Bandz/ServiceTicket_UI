@@ -1,0 +1,95 @@
+.container{
+
+    padding: 0px;
+
+
+    .myheader{
+        display: flex;
+
+      
+        .title{
+            margin-left: 10px;
+            width: 250px;
+           font-size: 25px;
+        }
+        .addbtn{
+            background-color: brown;
+            width: 60px;
+            height: 60px;
+            align-self: center;
+            cursor: pointer;
+            color: white;
+            background-color: #333;
+            border-radius: 5px;
+            border: none;
+            font-size: 28px;
+        }
+        .addbtn:hover{
+            background-color: gray;
+        }
+    }
+
+    .mybody{ 
+
+        .note{
+            margin: 20px;
+            float: left;
+            background-color: white;
+            border-radius: 5px;
+            width: 380px;
+            height: 420px;
+           
+            .mybuttons{
+                 
+                .btn{
+                    margin: 6px;
+                    width: 80px;
+                    height: 35px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    background-color: #333;
+                    color: white;
+                    border: none;
+                    float: right;
+
+                    .btnimg{
+                        width: 20px;
+                        height: auto;
+                    }
+
+                    .btnimg2{
+                        width: 20px;
+                        height: auto;
+                        
+                        filter: invert(100%);
+                        -webkit-filter: invert(100%);
+                          
+                    }
+                    
+                }
+                .btn:hover{
+                    background-color: gray;
+                }
+            }
+
+            .mytext{
+                width: 93%;
+                height: 80%;
+                background-color: white;
+                word-wrap: break-word;
+                white-space: pre-line;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                
+                overflow-y: auto;
+                font-family: 'Sen', sans-serif;
+            }
+
+        }
+    }
+
+    
+   
+    
+}

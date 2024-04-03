@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="myheader">
+        <p class="title">Message Generator</p>
+        <button class="addbtn" (click)="addNewTextBox()">+</button>
+    </div>
+
+    <div class="mybody">
+        @for (message of messages; track message) {
+        <div class="note">    
+            <div class="mybuttons">
+                <button class="btn"><img class="btnimg2" src="/assets/img/copy.svg" alt="Button Copy"></button>
+                <button class="btn" (click)="openDialog(message)"><img class="btnimg2" src="/assets/img/edit.svg" alt="Button Edit"></button>
+                <button class="btn" (click)="deleteMessage(message.id)"><img class="btnimg2" src="/assets/img/delete.svg" alt="Button Delete"></button>
+                 
+            </div>
+            <div class="mytext">
+                <h2>{{message.title}}</h2>
+                    {{message.message}} 
+            </div>
+        </div>
+        }
+    </div>
+    
+</div>
+
