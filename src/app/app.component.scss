@@ -42,3 +42,24 @@
       }
     }
 }
+
+.myfooter{
+    position: fixed;
+    bottom: 0px;
+    font-family: 'Sen', sans-serif;
+    float: right;
+    width: 100%;
+
+    a{
+        float: right;
+        text-decoration: none;
+        font-size: 11px;
+        cursor: pointer;
+        color: black;
+        margin: 4px;
+    }
+
+    a:hover {
+        color: gray;
+    }
+}

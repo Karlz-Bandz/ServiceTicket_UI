@@ -8,6 +8,7 @@ import { AddAtmComponent } from './add-atm/add-atm.component';
 import { DeleteAtmComponent } from './delete-atm/delete-atm.component';
 import { SearchAtmComponent } from './search-atm/search-atm.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MessageGeneratorComponent } from './message-generator/message-generator.component';
 
 export const routes: Routes = [
     {path: '', component: LoginPageComponent},
@@ -18,5 +19,6 @@ export const routes: Routes = [
     {path: 'atm', component: AtmComponent},
     {path: 'atm/add', component: AddAtmComponent},
     {path: 'atm/delete', component: DeleteAtmComponent},
-    {path: 'atm/search', component: SearchAtmComponent}
+    {path: 'atm/search', component: SearchAtmComponent},
+    {path: 'message', component: MessageGeneratorComponent}
 ];

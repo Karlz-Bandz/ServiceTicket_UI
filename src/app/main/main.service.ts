@@ -8,6 +8,8 @@ import { MasterTicketDto } from '../dto/MasterTicketDto';
 
 import { FormGroup } from '@angular/forms';
 import { AtmDto } from '../dto/AtmDto';
+import { MessageDto } from '../dto/MessageDto';
+import { AddMessageDto } from '../dto/AddMessageDto';
 
 @Injectable({
   providedIn: 'root'
@@ -76,5 +78,21 @@ export class MainService {
 
   public authenticate(formGroup: FormGroup): Observable<any>{
     return this.http.post<any>(`${this.baseApi}/auth/authenticate`, formGroup.value).pipe(shareReplay());
+  }
+
+  public getAllMessages(email: string): Observable<MessageDto[]>{
+    return this.http.get<MessageDto[]>(`${this.baseApi}/message/` + email + '/all');
+  }
+
+  public addNewMessage(addMessage: AddMessageDto): Observable<void>{
+    return this.http.post<void>(`${this.baseApi}/message/add`, addMessage);
+  }
+
+  public deleteMessage(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.baseApi}/message/delete/` + id);
+  }
+
+  public changeMessage(changeMessage: MessageDto): Observable<void>{
+    return this.http.put<void>(`${this.baseApi}/message/change`, changeMessage);
   }
 }

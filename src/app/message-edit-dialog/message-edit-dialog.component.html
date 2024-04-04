@@ -1,0 +1,22 @@
+<mat-dialog-content class="custom-modalbox">
+    <h2>Editor</h2>
+        <div class="small-container">
+          <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+            <mat-form-field>
+                <mat-label>Temat</mat-label>
+                <input matInput type="text" formControlName="title" name="title">
+            </mat-form-field>
+           
+            <mat-form-field>
+                <mat-label>Wiadomość</mat-label>
+                <textarea matInput type="text" formControlName="message" name="message"></textarea>
+            </mat-form-field>
+
+            <div class="form-group">
+                <button mat-raised-button color="primary" type="submit">Dodaj wiadomość</button>
+                <button mat-button (click)="onCancel()">Wróć</button>
+           </div>
+          </form>
+        </div>
+</mat-dialog-content>
