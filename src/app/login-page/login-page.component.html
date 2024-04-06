@@ -1,0 +1,20 @@
+<form [formGroup]="authForm" (ngSubmit)="logIn()">
+<div class="border" [ngStyle]="{'border-color' : verified ? '#333' : 'red'}">
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" name="email">
+        </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Hasło</mat-label>
+            <input matInput type="password" formControlName="password" name="password">
+    </mat-form-field>
+
+    <div class="form-group">
+        @if(!verified){
+            <p class="err">Niepoprawny email lub hasło.</p>
+        }
+        <button mat-raised-button color="primary" type="submit">Zaloguj</button>
+    </div>
+</div>
+</form>

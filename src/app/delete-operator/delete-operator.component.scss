@@ -1,0 +1,16 @@
+form{
+    text-align: center; 
+    margin-top: 110px;  
+
+    mat-form-field{
+        width: 60%;
+    }
+
+    .form-group{
+        width: 100%;
+
+        button{
+            width: 60%;
+        }
+    }
+}

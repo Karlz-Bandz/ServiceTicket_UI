@@ -1,0 +1,73 @@
+<form [formGroup]="searchForm" class="main-container" (ngSubmit)="searchAtm()">
+
+    <div class="search-box">
+
+        <div class="provide-form">
+
+            <mat-button-toggle-group value="atmIdBtn">
+                <mat-button-toggle (click)="changeFormToAtmId()" value="atmIdBtn">Identyfikator</mat-button-toggle>
+                <mat-button-toggle (click)="changeFormToSerial()" value="serialNoBtn">Numer Seryjny</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            @if(viewChange){
+
+                <mat-form-field>
+                    <mat-label>Identyfikator</mat-label>
+                    <input matInput formControlName="atmId" name="atmId">
+                </mat-form-field>
+                 
+                 @if(errorMessage){
+                     <p>Maszyna o podanym identyfikatorze nie istnieje.</p>
+                 }
+
+            }
+
+            @if(!viewChange){
+
+                <mat-form-field>
+                    <mat-label>Numer seryjny</mat-label>
+                    <input matInput formControlName="serialNo" name="serialNo">
+                </mat-form-field>
+                 
+                 @if(errorMessage){
+                     <p>Maszyna o podanym s/n nie istnieje.</p>
+                 }
+            }
+        </div> 
+
+        <div class="atm-data">
+           <table>
+            <tr>
+                <td>Nazwa klienta:</td>
+                <td>{{atm?.clientName}}</td>
+            </tr>
+            <tr>
+                <td>Identyfikator:</td>
+                <td>{{atm?.atmId}}</td>
+            </tr>
+            <tr>
+                <td>Numer seryjny:</td>
+                <td>{{atm?.serialNo}}</td>
+            </tr>
+            <tr>
+                <td>Lokalizacja:</td>
+                <td>{{atm?.location}}</td>
+            </tr>
+            <tr>
+                <td>Typ:</td>
+                <td>{{atm?.type}}</td>
+            </tr>
+            <tr>
+                <td>Telefon:</td>
+                <td>{{atm?.phone}}</td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="button-group">
+        <button mat-raised-button color="primary" type="submit">Szukaj</button>
+        <button mat-button routerLink="/atm">Wróć</button>
+    </div>
+</form>
+

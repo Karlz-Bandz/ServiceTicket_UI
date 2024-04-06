@@ -1,0 +1,72 @@
+<form [formGroup]="parentForm" (ngSubmit)="addOperator()">
+
+  <div formGroupName="operatorForm">
+    <mat-form-field>
+        <mat-label>Imię i nazwisko</mat-label>
+            <input matInput type="text" formControlName="name" name="name">
+            @if (name?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+            @if (name?.hasError('operatorNameExists')) {
+                <mat-error>Operator już istnieje.</mat-error>
+            }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Wybierz stanowisko</mat-label>
+      <mat-select formControlName="role">
+      @for (position of positions; track role) {
+        <mat-option [value]="position">{{position}}</mat-option>
+      }
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefon</mat-label>
+            <input matInput type="tel" formControlName="phone" name="phone">
+            @if (phone?.hasError('required')) {
+              <mat-error>Pole nie może być puste.</mat-error>
+            }
+            @if (phone?.hasError('pattern')) {
+                <mat-error>Pole może zawierać tylko spacje, + lub cyfry.</mat-error>
+            }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" name="email">
+          @if (email?.hasError('required')) {
+            <mat-error>Pole nie może być puste.</mat-error>
+          }
+          @if (email?.hasError('emailExists')) {
+            <mat-error>Podany email już istnieje.</mat-error>
+          }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" name="password">
+          @if (password?.hasError('required')) {
+            <mat-error>Pole nie może być puste.</mat-error>
+          }
+    </mat-form-field>
+    
+  </div>
+
+  <div formGroupName="roleForm">
+    <mat-form-field>
+      <mat-label>Wybierz uprawnienia</mat-label>
+      <mat-select formControlName="selectedRole">
+      @for (role of roles; track role) {
+        <mat-option [value]="role">{{role}}</mat-option>
+      }
+    </mat-select>
+    </mat-form-field>
+  </div>
+   
+    <div class="form-group">
+        <button mat-raised-button color="primary" [disabled]="parentForm.invalid" type="submit">Dodaj operatora</button>
+        <button mat-button routerLink="/operator">Wróć</button>
+   </div>
+</form>
+

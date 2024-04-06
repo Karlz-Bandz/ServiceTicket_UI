@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "wmc-demo-00",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

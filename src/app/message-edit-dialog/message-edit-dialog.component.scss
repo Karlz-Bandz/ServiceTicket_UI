@@ -1,0 +1,36 @@
+.custom-modalbox {
+   
+    border-radius: 5px;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+   
+    h2{
+        color: black;   
+        font-family: 'Sen', sans-serif;
+    }
+
+    .small-container{
+        width: 100%;
+        height: 100%;
+
+        mat-form-field{
+            width: 85%;
+
+            textarea{
+                height: 300px;
+            }
+        }
+      
+        .buttons{
+           
+            .btn{
+                width: 80px;
+                height: 35px;
+            }
+        }
+    }
+
+}

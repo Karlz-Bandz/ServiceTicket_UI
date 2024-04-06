@@ -1,0 +1,16 @@
+<form #operatorForm="ngForm" (ngSubmit)="deleteOperatorById(operatorForm.value)" ngNativeValidate>
+  
+    <mat-form-field class="mat-text">
+        <mat-label>Wybierz operatora</mat-label>
+    <mat-select name="operator" ngModel>
+        @for (operator of operators; track operator) {
+          <mat-option [value]="operator">{{operator.name}}</mat-option>
+        }
+    </mat-select>
+    </mat-form-field>
+
+    <div class="form-group">
+        <button mat-raised-button color="warn" type="submit">Usuń</button>
+        <button mat-button routerLink="/operator">Wróć</button>
+    </div>
+</form>
