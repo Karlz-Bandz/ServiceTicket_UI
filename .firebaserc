@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "wmc-demo-00"
+  },
+  "targets": {
+    "wmc-demo-00": {
+      "hosting": {
+        "wmc-demo-00": [
+          "wmc-demo-00"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
