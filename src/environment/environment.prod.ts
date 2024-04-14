@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiBaseUrl: '',
+    apiBaseUrl: 'https://api.wmc.inet2.org:8000',
 
     
     firebase: {
