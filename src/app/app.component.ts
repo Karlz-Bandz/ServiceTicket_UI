@@ -12,6 +12,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'ServiceTicket_UI';
 
+  isOpen: boolean = false;
+
   isLoggedIn(): boolean {
     return localStorage.getItem('btn') === 'true';
   }
@@ -25,6 +27,14 @@ export class AppComponent {
     localStorage.removeItem('email');
     localStorage.removeItem('tokenJwt');
     localStorage.removeItem('role');
+  }
+
+  toggleMenu(): void{
+     if(this.isOpen){
+        this.isOpen = false;
+     }else{
+        this.isOpen = true;
+     }
   }
 }
 

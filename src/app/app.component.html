@@ -2,8 +2,8 @@
 <h1>NCRATLEOS</h1>
 <div class="sub-header">WMC+</div>
 
-<div class="navbar">
-    <ul class="nav_links">
+    <div class="navbar">
+        <ul class="nav_links">
           @if(isLoggedIn()){
           <li><a routerLink="/service">Serwis</a></li>
           @if(isAdmin()){
@@ -14,8 +14,37 @@
           
           <li class="logoutli"><a routerLink="" class="logoutbtn" (click)="logout()">Wyloguj</a></li>
           }
-    </ul>
-</div>
+        </ul>
+    </div>
+
+    <div class="hamburger-nav">
+
+            @if(isLoggedIn()){
+            <div class="burger-btn" (click)="toggleMenu()">
+                @if(!isOpen){
+                    <img src="assets\img\burger-menu.svg" width="40px" height="auto" alt="mobile-menu-bar">
+                }
+                @if(isOpen){
+                    <img src="assets\img\exit.svg" width="40px" height="auto" alt="mobile-menu-bar">
+                }
+            </div>
+            }
+
+            @if(isOpen){
+                <ul class="nav_links">
+                    @if(isLoggedIn()){
+                    <li><a routerLink="/service" (click)="toggleMenu()">Serwis</a></li>
+                    @if(isAdmin()){
+                    <li><a routerLink="/operator" (click)="toggleMenu()">Operatorzy</a></li>
+                    }
+                    <li><a routerLink="/atm" (click)="toggleMenu()">Maszyny</a></li>
+                    <li><a routerLink="/message" (click)="toggleMenu()">Wiadomości</a></li>
+            
+                     <li class="logoutli"><a routerLink="" class="logoutbtn" (click)="logout()">Wyloguj</a></li>
+                     }
+                </ul>
+            }
+    </div>
 </div>
 
 <router-outlet></router-outlet>
@@ -23,5 +52,3 @@
 <div class="myfooter">
     <a href="https://github.com/Karlz-Bandz" target="_blank">Copyright &copy; 2023 Karol Melak</a>
 </div>
-
-

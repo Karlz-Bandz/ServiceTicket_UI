@@ -9,6 +9,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AddMessageDto } from '../dto/AddMessageDto';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { MessageEditDialogComponent } from '../message-edit-dialog/message-edit-dialog.component';
 
 @Component({
@@ -33,7 +34,8 @@ export class MessageGeneratorComponent implements OnInit {
   
   constructor(
     private mainService: MainService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private clipboard: Clipboard
   ){}
 
   email: any;
@@ -70,6 +72,10 @@ export class MessageGeneratorComponent implements OnInit {
             this.messages = data;
         });
     })
+  }
+
+  public copyMsg(message: string): void {
+    this.clipboard.copy(message);
   }
 
   public addNewTextBox(): void{
