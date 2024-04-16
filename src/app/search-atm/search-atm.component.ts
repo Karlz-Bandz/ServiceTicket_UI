@@ -9,6 +9,7 @@ import { MainService } from '../main/main.service';
 import { AtmDto } from '../dto/AtmDto';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { CheckAtmDto } from '../dto/CheckAtmDto';
 
 @Component({
   selector: 'app-search-atm',
@@ -31,7 +32,9 @@ export class SearchAtmComponent {
 
   atm: AtmDto | undefined;
   errorMessage: string = '';
-  viewChange: boolean = true;
+  viewChange: string = 'atmId';
+  atms: CheckAtmDto[] = [];
+  atmId: string | undefined;
 
   searchForm = new FormGroup({
     atmId: new FormControl(''),
@@ -42,29 +45,36 @@ export class SearchAtmComponent {
      private mainService: MainService
   ){}
 
+  public changeFormToSelect(): void{
+    this.viewChange = 'select';
+    this.atm = undefined;
+    this.errorMessage = '';
+    this.searchForm.reset();
+    this.mainService.getAtmList().subscribe(data => {
+      this.atms = data;
+    });
+  }
+
   public changeFormToSerial(): void{
-    if(this.viewChange){
-        this.viewChange = false;
+        this.viewChange = 'serial';
         this.atm = undefined;
         this.errorMessage = '';
         this.searchForm.reset();
-    }
   }
 
-  public changeFormToAtmId(): void{
-    if(!this.viewChange){
-        this.viewChange = true;
+  public changeFormToAtmId(): void {
+        this.viewChange = 'atmId';
         this.atm = undefined;
         this.errorMessage = '';
         this.searchForm.reset();
-      }
   }
 
-  public searchAtm(): void{
+  public changeAtmId(atmId: string): void {
+    this.searchForm.value.atmId = atmId;
+  }
 
-    console.log(this.searchForm);
-      
-    if(this.viewChange){
+  public searchAtm(): void {
+    if(this.viewChange === 'atmId' || this.viewChange === 'select'){
       this.mainService.findByAtmId(this.searchForm.value.atmId).subscribe((data) => {
         this.errorMessage = '';
         this.atm = data;
@@ -75,11 +85,10 @@ export class SearchAtmComponent {
         this.errorMessage = "Identyfikator nie istnieje.";
         console.error('Error:', error);
       });
-    }else{
+    }else if(this.viewChange === 'serial'){
       this.mainService.findBySerialNo(this.searchForm.value.serialNo).subscribe((data) => {
         this.errorMessage = '';
         this.atm = data;
-        console.log('ok');
       },
       (error) => {
         this.atm = undefined;

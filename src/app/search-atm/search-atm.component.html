@@ -7,9 +7,10 @@
             <mat-button-toggle-group value="atmIdBtn">
                 <mat-button-toggle (click)="changeFormToAtmId()" value="atmIdBtn">Identyfikator</mat-button-toggle>
                 <mat-button-toggle (click)="changeFormToSerial()" value="serialNoBtn">Numer Seryjny</mat-button-toggle>
+                <mat-button-toggle (click)="changeFormToSelect()" value="selectBtn">Wybierz</mat-button-toggle>
             </mat-button-toggle-group>
 
-            @if(viewChange){
+            @if(viewChange == 'atmId'){
 
                 <mat-form-field>
                     <mat-label>Identyfikator</mat-label>
@@ -19,10 +20,9 @@
                  @if(errorMessage){
                      <p>Maszyna o podanym identyfikatorze nie istnieje.</p>
                  }
-
             }
 
-            @if(!viewChange){
+            @if(viewChange == 'serial'){
 
                 <mat-form-field>
                     <mat-label>Numer seryjny</mat-label>
@@ -31,6 +31,22 @@
                  
                  @if(errorMessage){
                      <p>Maszyna o podanym s/n nie istnieje.</p>
+                 }
+            }
+
+            @if(viewChange == 'select'){
+
+                <mat-form-field>
+                    <mat-label>Wybierz maszynę</mat-label>
+                <mat-select name="atmId" (selectionChange)="changeAtmId($event.value)">
+                    @for (atm of atms; track atm) {
+                      <mat-option [value]="atm.atmId">{{atm.atmId}}</mat-option>
+                    }
+                </mat-select>
+                </mat-form-field>
+                 
+                 @if(errorMessage){
+                     <p>Maszyna o podanym identyfikatorze nie istnieje.</p>
                  }
             }
         </div> 

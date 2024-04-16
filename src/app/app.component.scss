@@ -92,16 +92,17 @@
 
             .nav_links{
                 list-style-type:none;
-                opacity: 0.95;
-            position: fixed;
-            z-index: 999;
-            padding: 0;
-            margin: 0;
-            padding-top: 14px;
+                opacity: 0.85;
+                width: 100%;
+                background-color: white;
+                position: fixed;
+                z-index: 999;
+                padding: 0;
+                margin: 0;
+                margin-top: 19px;
+                padding-top: 15px;
                 li{
-                    background-color: azure;
-                    padding: 16px;
-                    width: 330px;
+                   padding: 16px;
                      a{
                         text-decoration: none;
                         color: black;

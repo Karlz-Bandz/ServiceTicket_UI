@@ -6,6 +6,23 @@
         border-radius: 5px;
         display: inline-block;
         .provide-form{
+
+            @media only screen and (max-width: 420px) {
+                mat-button-toggle-group{
+                    mat-button-toggle{
+                        width: 115px;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                }
+            }
+            @media only screen and (min-width: 420px) {
+                mat-button-toggle-group{
+                    mat-button-toggle{
+                        width: 150px;
+                    }
+                }
+            }
             mat-form-field{
                width: 90%;
                margin-top: 15px;

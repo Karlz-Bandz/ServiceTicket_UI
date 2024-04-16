@@ -12,8 +12,14 @@
         }
         .addbtn{
             background-color: brown;
-            width: 60px;
-            height: 60px;
+            @media only screen and (max-width: 420px) {
+                width: 37px;
+                height: 37px;
+            }
+            @media only screen and (min-width: 420px) {
+                width: 60px;
+                height: 60px;
+            }
             align-self: center;
             cursor: pointer;
             color: white;
