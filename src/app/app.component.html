@@ -6,11 +6,12 @@
         <ul class="nav_links">
           @if(isLoggedIn()){
           <li><a routerLink="/service">Serwis</a></li>
+          <li><a routerLink="/atm">Maszyny</a></li>
+          <li><a routerLink="/forum">Forum</a></li>
+          <li><a routerLink="/message">Wiadomości</a></li>
           @if(isAdmin()){
           <li><a routerLink="/operator">Operatorzy</a></li>
           }
-          <li><a routerLink="/atm">Maszyny</a></li>
-          <li><a routerLink="/message">Wiadomości</a></li>
           
           <li class="logoutli"><a routerLink="" class="logoutbtn" (click)="logout()">Wyloguj</a></li>
           }
@@ -34,14 +35,15 @@
                 <ul class="nav_links">
                     @if(isLoggedIn()){
                     <li><a routerLink="/service" (click)="toggleMenu()">Serwis</a></li>
-                    @if(isAdmin()){
-                    <li><a routerLink="/operator" (click)="toggleMenu()">Operatorzy</a></li>
-                    }
                     <li><a routerLink="/atm" (click)="toggleMenu()">Maszyny</a></li>
+                    <li><a routerLink="/forum" (click)="toggleMenu()">Forum</a></li>
                     <li><a routerLink="/message" (click)="toggleMenu()">Wiadomości</a></li>
+                    @if(isAdmin()){
+                        <li><a routerLink="/operator" (click)="toggleMenu()">Operatorzy</a></li>
+                    }
             
-                     <li class="logoutli"><a routerLink="" class="logoutbtn" (click)="logout()">Wyloguj</a></li>
-                     }
+                    <li class="logoutli"><a routerLink="" class="logoutbtn" (click)="logout()">Wyloguj</a></li>
+                    }
                 </ul>
             }
     </div>

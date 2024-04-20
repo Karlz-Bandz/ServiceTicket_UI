@@ -1,0 +1,29 @@
+<div class="container">
+        <mat-form-field>
+            <mat-label>Wiadomość</mat-label>
+                <textarea type="text" matInput [(ngModel)]="message"></textarea>
+        </mat-form-field>
+    
+       
+        <div class="btn-group">
+          <button mat-raised-button color="primary" (click)="submit()">Dodaj</button>
+        </div>
+
+        <div class="messages-container">
+        @for (message of forumMessages; track message) {
+            <div class="message">
+                <div class="date"> 
+                    <div class="myDate">{{message.date}}</div> 
+                    <button class="btn" (click)="deleteMessage(message.id)"><img class="btnimg2" src="/assets/img/delete.svg" alt="Button Delete"></button>
+                
+                </div>
+                <div class="operatorName">{{message.forumOperator.name}}</div>
+                <br><br>
+                <div class="forumText">
+                     {{message.message}}
+                </div>
+            </div>
+        }
+        </div>
+</div>
+   
