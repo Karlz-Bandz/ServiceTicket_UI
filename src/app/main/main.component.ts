@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { CustomValidator } from '../validation/CustomValidator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -35,11 +36,20 @@ export class MainComponent implements OnInit{
       clientDescription: new FormControl('', Validators.required)
   });
 
-  constructor(private mainService: MainService){}
+  constructor(
+    private mainService: MainService,
+    private rout: Router
+  ){}
 
   ngOnInit(): void {
     this.mainService.getAtmList().subscribe(data => {
       this.resultsAtm = data;
+    },(err) => {
+      localStorage.removeItem('btn');
+      localStorage.removeItem('email');
+      localStorage.removeItem('tokenJwt');
+      localStorage.removeItem('role');
+      this.rout.navigate(['']);
     });
   }
 

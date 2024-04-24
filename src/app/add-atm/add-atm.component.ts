@@ -7,7 +7,7 @@ import { MainService } from '../main/main.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
@@ -33,7 +33,8 @@ export class AddAtmComponent {
 
   constructor(
     private atmService: AddAtmService,
-    private mainService: MainService
+    private mainService: MainService,
+    private rout: Router
   ){}
 
  atmForm = new FormGroup({
@@ -77,6 +78,12 @@ export class AddAtmComponent {
         console.log("Ok!");
         location.reload();
         alert("Maszyna " + this.atmForm.value.atmId + " została dodana do bazy.");
+    },(err) => {
+        localStorage.removeItem('btn');
+        localStorage.removeItem('email');
+        localStorage.removeItem('tokenJwt');
+        localStorage.removeItem('role');
+        this.rout.navigate(['']);
     });
   }
 }

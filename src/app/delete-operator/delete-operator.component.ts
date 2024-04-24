@@ -3,7 +3,7 @@ import { CheckOperatorDto } from '../dto/CheckOperatorDto';
 import { MainService } from '../main/main.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,11 +27,20 @@ export class DeleteOperatorComponent implements OnInit {
   operators: CheckOperatorDto[] = [];
   operator: CheckOperatorDto | undefined;
 
-  constructor(private mainService: MainService){}
+  constructor(
+    private mainService: MainService,
+    private rout: Router
+  ){}
   
   ngOnInit(): void {
     this.mainService.getOperatorList().subscribe(data => {
       this.operators = data;
+    },(err) => {
+      localStorage.removeItem('btn');
+      localStorage.removeItem('email');
+      localStorage.removeItem('tokenJwt');
+      localStorage.removeItem('role');
+      this.rout.navigate(['']);
     });
   }
 
