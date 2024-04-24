@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AddOperatorService } from './add-operator.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -79,7 +79,8 @@ export class AddOperatorComponent {
 
   constructor(
     private operatorService: AddOperatorService,
-    private mainService: MainService
+    private mainService: MainService,
+    private rout: Router
     ){}
 
   public addOperator(): void {
@@ -93,11 +94,23 @@ export class AddOperatorComponent {
         this.operatorService.registerAdmin(operator).subscribe(() => {
             alert("Admin " + operator?.name + " został dodany do bazy."); 
             location.reload();
+        },(err) => {
+          localStorage.removeItem('btn');
+          localStorage.removeItem('email');
+          localStorage.removeItem('tokenJwt');
+          localStorage.removeItem('role');
+          this.rout.navigate(['']);
         });
     }else if(role === "USER"){
         this.operatorService.registerOperator(operator).subscribe(() => {
             alert("Operator " + operator?.name + " został dodany do bazy.");
             location.reload();
+        },(err) => {
+          localStorage.removeItem('btn');
+          localStorage.removeItem('email');
+          localStorage.removeItem('tokenJwt');
+          localStorage.removeItem('role');
+          this.rout.navigate(['']);
         });
     }
   }

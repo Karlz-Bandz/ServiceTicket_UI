@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-delete-atm',
@@ -30,11 +30,18 @@ export class DeleteAtmComponent {
   
   constructor(
     private mainService: MainService,
+    private rout: Router
   ){}
   
   ngOnInit(): void {
     this.mainService.getAtmList().subscribe(data => {
       this.atms = data;
+    },(err) => {
+      localStorage.removeItem('btn');
+      localStorage.removeItem('email');
+      localStorage.removeItem('tokenJwt');
+      localStorage.removeItem('role');
+      this.rout.navigate(['']);
     });
   }
 

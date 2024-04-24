@@ -9,7 +9,9 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AddMessageDto } from '../dto/AddMessageDto';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { MessageEditDialogComponent } from '../message-edit-dialog/message-edit-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-message-generator',
@@ -33,7 +35,9 @@ export class MessageGeneratorComponent implements OnInit {
   
   constructor(
     private mainService: MainService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private clipboard: Clipboard,
+    private rout: Router
   ){}
 
   email: any;
@@ -43,6 +47,12 @@ export class MessageGeneratorComponent implements OnInit {
      this.email = localStorage.getItem('email');
      this.mainService.getAllMessages(this.email).subscribe((data: MessageDto[]) => {
         this.messages = data;
+     },(err) => {
+      localStorage.removeItem('btn');
+      localStorage.removeItem('email');
+      localStorage.removeItem('tokenJwt');
+      localStorage.removeItem('role');
+      this.rout.navigate(['']);
      });
   }
 
@@ -70,6 +80,10 @@ export class MessageGeneratorComponent implements OnInit {
             this.messages = data;
         });
     })
+  }
+
+  public copyMsg(message: string): void {
+    this.clipboard.copy(message);
   }
 
   public addNewTextBox(): void{

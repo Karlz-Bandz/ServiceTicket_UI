@@ -72,7 +72,6 @@ export class LoginPageComponent implements OnInit{
           localStorage.setItem('tokenJwt', data.token);
           localStorage.setItem('btn', 'true');
           this.router.navigate(['/service']);
-          
         }else{
           alert(data.message);
         }

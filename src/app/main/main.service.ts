@@ -10,6 +10,8 @@ import { FormGroup } from '@angular/forms';
 import { AtmDto } from '../dto/AtmDto';
 import { MessageDto } from '../dto/MessageDto';
 import { AddMessageDto } from '../dto/AddMessageDto';
+import { ForumMessageDto } from '../dto/ForumMessageDto';
+import { AddForumMessageDto } from '../dto/AddForumMessageDto';
 
 @Injectable({
   providedIn: 'root'
@@ -94,5 +96,17 @@ export class MainService {
 
   public changeMessage(changeMessage: MessageDto): Observable<void>{
     return this.http.put<void>(`${this.baseApi}/message/change`, changeMessage);
+  }
+
+  public getForumMessages(): Observable<ForumMessageDto[]>{
+    return this.http.get<ForumMessageDto[]>(`${this.baseApi}/forum/all`);
+  }
+
+  public addForumMessage(addMessage: AddForumMessageDto): Observable<void>{
+    return this.http.post<void>(`${this.baseApi}/forum/add`, addMessage);
+  }
+
+  public deleteForumMessage(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.baseApi}/forum/delete/` + id);
   }
 }

@@ -8,7 +8,7 @@
         @for (message of messages; track message) {
         <div class="note">    
             <div class="mybuttons">
-                <button class="btn"><img class="btnimg2" src="/assets/img/copy.svg" alt="Button Copy"></button>
+                <button class="btn" (click)="copyMsg(message.message)"><img class="btnimg2" src="/assets/img/copy.svg" alt="Button Copy"></button>
                 <button class="btn" (click)="openDialog(message)"><img class="btnimg2" src="/assets/img/edit.svg" alt="Button Edit"></button>
                 <button class="btn" (click)="deleteMessage(message.id)"><img class="btnimg2" src="/assets/img/delete.svg" alt="Button Delete"></button>
                  
